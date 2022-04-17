@@ -7,7 +7,12 @@ function App() {
 
 
   useEffect(() => {
-    fetch('http://localhost:8080/')
+    const requestOptions = {
+      method: 'GET',
+      // headers: { 'Content-Type': 'application/json' },
+      // body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+    };
+    fetch('http://localhost:8080/get-colleges', requestOptions)
       .then(async response => {
         const data = await response.json();
         console.log(data)
