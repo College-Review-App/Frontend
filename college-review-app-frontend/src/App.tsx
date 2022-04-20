@@ -4,15 +4,13 @@ import './App.css';
 
 function App() {
 
-
-
-  useEffect(() => {
+  const addCollege = () => {
     const requestOptions = {
-      method: 'GET',
+      method: 'POST',
       // headers: { 'Content-Type': 'application/json' },
-      // body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+      body: JSON.stringify({ college_name : 'University of Utah', GPA: 2.89 })
     };
-    fetch('http://localhost:8080/get-colleges', requestOptions)
+    fetch('http://localhost:8080/add-college', requestOptions)
       .then(async response => {
         const data = await response.json();
         console.log(data)
@@ -20,7 +18,7 @@ function App() {
       .catch(error => {
           console.log('There was an error!', error);
       });
-  }, []);
+  }
 
   return (
     <div className="App">
@@ -37,6 +35,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={() => addCollege()}>Add College</button>
       </header>
     </div>
   );
