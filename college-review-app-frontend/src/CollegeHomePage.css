@@ -1,0 +1,5 @@
+.userFormContainer {
+    display: flex;
+    flex-direction: column;
+}
+  

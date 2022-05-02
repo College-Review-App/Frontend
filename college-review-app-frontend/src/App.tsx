@@ -6,7 +6,7 @@ import RouterHQ from './RouterHQ';
 
 function App() {
   return (
-    <RouterHQ/>
+      <RouterHQ />
   );
 }
 
