@@ -20,25 +20,29 @@ class applicantReview {
     private isVerified: Boolean;
         
     constructor(applicantReview: Object) {
-        this.reviewId = Object(applicantReview)["reviewId"];
-        this.collegeId = Object(applicantReview)["collegeId"];
-        this.reviewDate = Object(applicantReview)["reviewDate"];
-        this.city = Object(applicantReview)["city"];
-        this.state = Object(applicantReview)["state"];
-        this.country = Object(applicantReview)["country"];
-        this.race = Object(applicantReview)["race"];
-        this.gender = Object(applicantReview)["gender"];
-        this.familyIncome = Object(applicantReview)["familyIncome"];
-        this.highschool = Object(applicantReview)["highschool"];
-        this.GPA = Object(applicantReview)["GPA"];
-        this.SAT = Object(applicantReview)["SAT"];
-        this.ACT = Object(applicantReview)["ACT"];
-        this.intendedMajor = Object(applicantReview)["intendedMajor"];
-        this.extracurriculars = Object(applicantReview)["extracurriculars"];
-        this.advice = Object(applicantReview)["advice"];
-        this.likes = Object(applicantReview)["likes"];
-        this.outcome = Object(applicantReview)["outcome"];
-        this.isVerified = Object(applicantReview)["isVerified"];
+        this.reviewId = this.setOrNull(Object(applicantReview)["reviewId"]);
+        this.collegeId = this.setOrNull(Object(applicantReview)["collegeId"]);
+        this.reviewDate = this.setOrNull(Object(applicantReview)["reviewDate"]);
+        this.city = this.setOrNull(Object(applicantReview)["city"]);
+        this.state = this.setOrNull(Object(applicantReview)["state"]);
+        this.country = this.setOrNull(Object(applicantReview)["country"]);
+        this.race = this.setOrNull(Object(applicantReview)["race"]);
+        this.gender = this.setOrNull(Object(applicantReview)["gender"]);
+        this.familyIncome = this.setOrNull(Object(applicantReview)["familyIncome"]);
+        this.highschool = this.setOrNull(Object(applicantReview)["highschool"]);
+        this.GPA = this.setOrNull(Object(applicantReview)["gpa"]);
+        this.SAT = this.setOrNull(Object(applicantReview)["sat"]);
+        this.ACT = this.setOrNull(Object(applicantReview)["act"]);
+        this.intendedMajor = this.setOrNull(Object(applicantReview)["intendedMajor"]);
+        this.extracurriculars = this.setOrNull(Object(applicantReview)["extracurriculars"]);
+        this.advice = this.setOrNull(Object(applicantReview)["advice"]);
+        this.likes = this.setOrNull(Object(applicantReview)["likes"]);
+        this.outcome = this.setOrNull(Object(applicantReview)["outcome"]);
+        this.isVerified = this.setOrNull(Object(applicantReview)["isVerified"]);
+    }
+
+    private setOrNull(reviewField: any): any {
+        return reviewField == null || reviewField == undefined ? null : reviewField
     }
 
     public get getReviewId(): number {

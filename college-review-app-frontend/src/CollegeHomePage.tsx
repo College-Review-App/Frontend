@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './CollegeHomePage.css';
+import applicantReview from './interfaces/applicantReview';
+
 
 function CollegeHomePage() {
   //collegeName field that we pass through the Url to relay information
@@ -26,15 +28,16 @@ function CollegeHomePage() {
   const getInformationForCollege = () => {
     const requestOptions = {
       method: 'GET',
-      // headers: { 'Content-Type': 'application/json' },
     };
-    fetch(
-      `http://localhost:8080/find-applications-by-college-name?collegeName=${collegeName}`,
-      requestOptions
-    )
-      .then(async (response) => {
+
+    fetch(`http://localhost:8080/get-college-and-applications-from-college-name?collegeName=${collegeName}`, requestOptions)
+      .then(async response => {
         const data = await response.json();
-        console.log(data);
+        let appInfo = new applicantReview(data[1][0])
+        console.log(appInfo)
+        console.log(appInfo.getAdvice)
+        console.log(appInfo.getGPA)
+        console.log(data)
       })
       .catch((error) => {
         console.log('There was an error!', error);

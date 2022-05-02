@@ -7,12 +7,16 @@ class college {
     private ranking: number;
         
     constructor(college: Object) {
-        this.collegeId = Object(college)["collegeId"];
-        this.collegeName = Object(college)["collegeName"];
-        this.location = Object(college)["location"];
-        this.image = Object(college)["image"];
-        this.acceptanceRate = Object(college)["acceptanceRate"];
-        this.ranking = Object(college)["ranking"];
+        this.collegeId = this.setOrNull(Object(college)["collegeId"]);
+        this.collegeName = this.setOrNull(Object(college)["collegeName"]);
+        this.location = this.setOrNull(Object(college)["location"]);
+        this.image = this.setOrNull(Object(college)["image"]);
+        this.acceptanceRate = this.setOrNull(Object(college)["acceptanceRate"]);
+        this.ranking = this.setOrNull(Object(college)["ranking"]);
+    }
+
+    private setOrNull(reviewField: any): any {
+        return reviewField == null || reviewField == undefined ? null : reviewField
     }
 
     public get getCollegeId(): number {
