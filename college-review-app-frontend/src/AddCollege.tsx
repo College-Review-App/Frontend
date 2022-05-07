@@ -1,90 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import './CollegeHomePage.css';
-import applicantReview from './interfaces/applicantReview';
+import React, { useState } from "react";
 
-
-function CollegeHomePage() {
-  //collegeName field that we pass through the Url to relay information
-  let { collegeName } = useParams();
-
+const AddCollege = () => {
   //state fields for user input form asked to an applicant
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [race, setRace] = useState('');
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [race, setRace] = useState("");
   const [gender, setGender] = useState(-1);
   const [familyIncome, setFamilyIncome] = useState(-1);
-  const [highschool, setHighschool] = useState('');
+  const [highschool, setHighschool] = useState("");
   const [GPA, setGPA] = useState(-1.0);
   const [SAT, setSAT] = useState(-1);
   const [ACT, setACT] = useState(-1);
-  const [intendedMajor, setIntendedMajor] = useState('');
-  const [extracurriculars, setExtracurriculars] = useState('');
-  const [advice, setAdvice] = useState('');
+  const [intendedMajor, setIntendedMajor] = useState("");
+  const [extracurriculars, setExtracurriculars] = useState("");
+  const [advice, setAdvice] = useState("");
   const [outcome, setOutcome] = useState(-1);
   const [isVerified, setIsVerified] = useState(false);
 
-  const getInformationForCollege = () => {
-    const requestOptions = {
-      method: 'GET',
-    };
-
-    fetch(`http://localhost:8080/get-college-and-applications-from-college-name?collegeName=${collegeName}`, requestOptions)
-      .then(async response => {
-        const data = await response.json();
-        let appInfo = new applicantReview(data[1][0])
-        console.log(appInfo)
-        console.log(appInfo.getAdvice)
-        console.log(appInfo.getGPA)
-        console.log(data)
-      })
-      .catch((error) => {
-        console.log('There was an error!', error);
-      });
-  };
-
-  const addApplicationtoDatabase = () => {
-    const requestOptions = {
-      method: 'POST',
-      body: JSON.stringify({
-        city: city,
-        state: state,
-        country: country,
-        race: race,
-        gender: gender,
-        familyIncome: familyIncome,
-        highschool: highschool,
-        GPA: GPA,
-        SAT: SAT,
-        ACT: ACT,
-        intendedMajor: intendedMajor,
-        extracurriculars: extracurriculars,
-        advice: advice,
-        outcome: outcome,
-        isVerified: isVerified,
-      }),
-    };
-    fetch(
-      `http://localhost:8080/add-applications-by-college-name?collegeName=${collegeName}`,
-      requestOptions
-    )
-      .then(async (response) => {
-        const data = await response.json();
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log('There was an error!', error);
-      });
-  };
-
-  useEffect(() => {
-    getInformationForCollege();
-  }, []);
+//   const addApplicationtoDatabase = () => {
+//     const requestOptions = {
+//       method: "POST",
+//       body: JSON.stringify({
+//         city: city,
+//         state: state,
+//         country: country,
+//         race: race,
+//         gender: gender,
+//         familyIncome: familyIncome,
+//         highschool: highschool,
+//         GPA: GPA,
+//         SAT: SAT,
+//         ACT: ACT,
+//         intendedMajor: intendedMajor,
+//         extracurriculars: extracurriculars,
+//         advice: advice,
+//         outcome: outcome,
+//         isVerified: isVerified,
+//       }),
+//     };
+//     fetch(
+//       `http://localhost:8080/add-applications-by-college-name?collegeName=${collegeName}`,
+//       requestOptions
+//     )
+//       .then(async (response) => {
+//         const data = await response.json();
+//         console.log(data);
+//       })
+//       .catch((error) => {
+//         console.log("There was an error!", error);
+//       });
+//   };
 
   return (
     <div>
-      This is the page for {collegeName}
       <form>
         <div className="userFormContainer">
           <label>
@@ -293,10 +262,12 @@ function CollegeHomePage() {
           </label>
         </div>
 
-        <div onClick={() => addApplicationtoDatabase()}>Sumbit</div>
+        <div 
+            // onClick={() => addApplicationtoDatabase()}
+        >Submit</div>
       </form>
     </div>
   );
 }
 
-export default CollegeHomePage;
+export default AddCollege;

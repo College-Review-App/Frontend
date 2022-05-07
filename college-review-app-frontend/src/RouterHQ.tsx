@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import CollegeHomePage from './CollegeHomePage'
-import Error404 from './Error404'
-import HomePage from './HomePage'
+import CollegeHomePage from './screens/CollegePage/CollegeHomePage'
+import Error404 from './screens/ErrorPage/Error404'
+import HomePage from './screens/HomePage/HomePage'
 
 //headquarters for all things navigation and routing
 //use links for navigation

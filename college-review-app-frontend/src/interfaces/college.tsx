@@ -6,7 +6,7 @@ class college {
     private acceptanceRate: number;
     private ranking: number;
         
-    constructor(college: Object) {
+    constructor(college?: Object) {
         this.collegeId = this.setOrNull(Object(college)["collegeId"]);
         this.collegeName = this.setOrNull(Object(college)["collegeName"]);
         this.location = this.setOrNull(Object(college)["location"]);
