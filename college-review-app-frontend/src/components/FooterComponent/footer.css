@@ -1,0 +1,27 @@
+.footer {
+    /* padding: vertical horizontal */
+    padding: 5% 15%;
+    background-color: rgb(243, 135, 243);
+}
+
+.logoAndSocialMediaContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footerLinksColumnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.footerSocialMediaContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
