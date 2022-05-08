@@ -1,5 +1,32 @@
-.userFormContainer {
+.collegePageContainer {
     display: flex;
     flex-direction: column;
 }
-  
+
+.collegeInfoContainer {
+    height: 50vh;
+    border: solid;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.reviewInfoContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.reviewStatsLeftContainer {
+    width: 30%;
+    border: solid;
+    background-color: lightcoral;
+}
+
+.applicantReviewsRightContainer {
+    width: 70%;
+    border: solid;
+    padding: 15px;
+    background-color: lightgreen;
+}

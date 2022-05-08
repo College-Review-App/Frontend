@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider, theme} from '@chakra-ui/react';
 import RouterHQ from './RouterHQ';
 
 
 function App() {
   return (
+    <ThemeProvider theme={theme}>
       <RouterHQ />
+    </ThemeProvider>
   );
 }
 

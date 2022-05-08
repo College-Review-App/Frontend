@@ -6,19 +6,7 @@ const Review = (props: { review: applicantReview }) => {
   const review = props.review;
   let intendedMajor = review.getIntendedMajor;
   let GPA = review.getGPA;
-
-  const getOutcomeText = () => {
-    if (review.getOutcome === 1) {
-      return "Accepted";
-    } else if (review.getOutcome === 0) {
-      return "Rejected";
-    } else {
-      return "Waitlisted";
-    }
-  }
-
-  // No need for waitlisted anymore
-  let outcome = getOutcomeText();
+  let outcome = review.getOutcome == 1 ? "Accepted" : "Rejected";
 
   return (
     <div className="reviewContainer">
