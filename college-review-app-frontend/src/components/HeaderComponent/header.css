@@ -9,16 +9,7 @@
 }
 
 .headerSearchBar {
-    width: 650px;
-    height: 50px;
-    font-weight: 400;
-    font-size: large;
-    outline: transparent solid 2px;
-    outline-offset: 2px;
-    background-color: rgb(249, 248, 248);
-    border-radius: 20px;
-    border: black solid 2px;
-    padding-left: 5px;
+    width: 50%;
 }
 
 .navbarContainer {
@@ -29,4 +20,6 @@
 
 .headerLinkItem {
     margin-left: 20px;
+    text-decoration: none;
+    color: black;
 }

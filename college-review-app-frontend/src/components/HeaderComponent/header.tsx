@@ -1,7 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './header.css';
 import HeaderLogo from './HeaderLogo.svg';
+import { Input, InputLeftElement, InputGroup } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 
 // Header:
 
@@ -9,18 +11,24 @@ import HeaderLogo from './HeaderLogo.svg';
 // - About page
 // - FAQ
 
+//use Link for user navigation
+//use navigate to do it yourself (form sumbissions)
+
 function Header() {
-  let navigate = useNavigate();
+  // const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <header className="headerContainer">
-      <img
-        className="headerColleyImg"
-        src={HeaderLogo}
-        alt="Colley Logo Image"
-      />
+      <Link to="/">
+        <img
+          className="headerColleyImg"
+          src={HeaderLogo}
+          alt="Colley Logo Image"
+        />
+      </Link>
       {/* Search Bar */}
-      <div >
+      {/* <div >
         <input
           className='headerSearchBar'
           aria-autocomplete="list"
@@ -29,33 +37,35 @@ function Header() {
           spellCheck="false"
           placeholder="Search For a College"
         />
-      </div>
+      </div> */}
+
+      {location.pathname === '/' ? null : (
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            children={<SearchIcon color="gray.300" />}
+          />
+          <Input
+            type="search"
+            size={'md'}
+            width="50%"
+            placeholder="Search for College"
+            _placeholder={{ opacity: 0.4, color: 'grey.500' }}
+            variant="filled"
+          />
+        </InputGroup>
+      )}
 
       <div className="navbarContainer">
-        <p
-          onClick={() => {
-            navigate('/about');
-          }}
-          className="headerLinkItem"
-        >
+        <Link to="/about" className="headerLinkItem">
           About
-        </p>
-        <p
-          onClick={() => {
-            navigate('/blog');
-          }}
-          className="headerLinkItem"
-        >
+        </Link>
+        <Link to="/blog" className="headerLinkItem">
           Blog
-        </p>
-        <p
-          onClick={() => {
-            navigate('/FAQ');
-          }}
-          className="headerLinkItem"
-        >
+        </Link>
+        <Link to="/faq" className="headerLinkItem">
           FAQ
-        </p>
+        </Link>
       </div>
     </header>
   );

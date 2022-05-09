@@ -21,7 +21,7 @@ function HomePage() {
 
   return (
     <div>
-        <button onClick={() => addCollege()}>Add College</button>
+        {/* <button onClick={() => addCollege()}>Add College</button> */}
     </div>  
   )
 }

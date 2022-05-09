@@ -25,3 +25,13 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.footerColumnContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottomLinksText {
+    text-decoration: none;
+    color: black;
+}

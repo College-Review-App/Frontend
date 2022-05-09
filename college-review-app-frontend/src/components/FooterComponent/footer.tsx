@@ -1,8 +1,8 @@
 import React from 'react';
-import "./footer.css"
+import './footer.css';
 import FooterLogo from './tempLogo.svg';
 import { FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Footer() {
   let navigate = useNavigate();
@@ -39,11 +39,7 @@ function Footer() {
             rel="noopener noreferrer"
             href="https://twitter.com/getspogo"
           >
-            <FaTwitter
-              className="socialIconFooter"
-              size={25}
-              color={'black'}
-            />
+            <FaTwitter className="socialIconFooter" size={25} color={'black'} />
           </a>
           <a
             target="_blank"
@@ -60,7 +56,7 @@ function Footer() {
       </div>
 
       {/* divider */}
-      <hr color='black'/>
+      <hr color="black" />
 
       <div className="footerLinksColumnContainer">
         <div className="footerColumnContainer">
@@ -74,42 +70,24 @@ function Footer() {
             onClick={() => {
               window.open('mailto:getspogo@gmail.com');
             }}
-          >getcolley@colley.com</p>
+          >
+            getcolley@colley.com
+          </p>
         </div>
         <div className="footerColumnContainer">
           <h4>Pages</h4>
-          <p
-            onClick={() => {
-              navigate('/');
-            }}
-            className="bottomLinksText"
-          >
+          <Link to="/" className="bottomLinksText">
             Home
-          </p>
-          <p
-            onClick={() => {
-              navigate('/about');
-            }}
-            className="bottomLinksText"
-          >
+          </Link>
+          <Link to="/about" className="bottomLinksText">
             About
-          </p>
-          <p
-            onClick={() => {
-              navigate('/blog');
-            }}
-            className="bottomLinksText"
-          >
+          </Link>
+          <Link to="/blog" className="bottomLinksText">
             Blog
-          </p>
-          <p
-            onClick={() => {
-              navigate('/FAQ');
-            }}
-            className="bottomLinksText"
-          >
+          </Link>
+          <Link to="/faq" className="bottomLinksText">
             FAQ
-          </p>
+          </Link>
         </div>
       </div>
     </footer>
