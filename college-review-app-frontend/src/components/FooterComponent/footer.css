@@ -1,7 +1,12 @@
 .footer {
     /* padding: vertical horizontal */
     padding: 5% 15%;
-    background-color: rgb(243, 135, 243);
+    background-color: #62D2A2;
+}
+
+.footerColleyImg {
+    width: 150px;
+    height: auto;
 }
 
 .logoAndSocialMediaContainer {
@@ -16,6 +21,10 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+}
+
+.footerColumnHeader {
+    color: #FCFBFA;
 }
 
 .footerSocialMediaContainer {
@@ -33,5 +42,5 @@
 
 .bottomLinksText {
     text-decoration: none;
-    color: black;
+    color: #FCFBFA;
 }

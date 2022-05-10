@@ -1,6 +1,6 @@
 import React from 'react';
 import './footer.css';
-import FooterLogo from './tempLogo.svg';
+import FooterLogo from './colleyLogo.png';
 import { FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ function Footer() {
             <FaLinkedin
               className="socialIconFooter"
               size={25}
-              color={'black'}
+              color={'#FCFBFA'}
             />
           </a>
           <a
@@ -39,7 +39,7 @@ function Footer() {
             rel="noopener noreferrer"
             href="https://twitter.com/getspogo"
           >
-            <FaTwitter className="socialIconFooter" size={25} color={'black'} />
+            <FaTwitter className="socialIconFooter" size={25} color={'#FCFBFA'} />
           </a>
           <a
             target="_blank"
@@ -49,24 +49,24 @@ function Footer() {
             <FaInstagram
               className="socialIconFooter"
               size={25}
-              color={'black'}
+              color={'#FCFBFA'}
             />
           </a>
         </div>
       </div>
 
       {/* divider */}
-      <hr color="black" />
+      <hr color="#FCFBFA" />
 
       <div className="footerLinksColumnContainer">
         <div className="footerColumnContainer">
-          <h4>Legal</h4>
-          <p>Privacy Policy</p>
-          <p>Terms of Service</p>
+          <h4 className="footerColumnHeader">Legal</h4>
+          <p className="bottomLinksText">Privacy Policy</p>
+          <p className="bottomLinksText">Terms of Service</p>
         </div>
         <div className="footerColumnContainer">
-          <h4>Contact</h4>
-          <p
+          <h4 className="footerColumnHeader">Contact</h4>
+          <p className="bottomLinksText"
             onClick={() => {
               window.open('mailto:getspogo@gmail.com');
             }}
@@ -75,7 +75,7 @@ function Footer() {
           </p>
         </div>
         <div className="footerColumnContainer">
-          <h4>Pages</h4>
+          <h4 className="footerColumnHeader">Pages</h4>
           <Link to="/" className="bottomLinksText">
             Home
           </Link>

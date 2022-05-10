@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './header.css';
-import HeaderLogo from './HeaderLogo.svg';
+import HeaderLogo from './colleyLogo.png';
 import { Input, InputLeftElement, InputGroup } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 

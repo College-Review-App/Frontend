@@ -3,9 +3,15 @@
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    padding: 2% 10%;
+    /* padding: vertical horizontal */
+    padding: 1% 10%;
     justify-content: space-between;
-    background-color: rgb(243, 135, 243);
+    background-color: #FCFBFA;
+}
+
+.headerColleyImg {
+    width: 125px;
+    height: auto;
 }
 
 .headerSearchBar {

@@ -1,0 +1,85 @@
+.landingPageSearchBarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.landingPageSearchBarBackgroundImage {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    /* color: white; */
+}
+
+.landingPageSearchBarHeader {
+    font-size: 30px;
+    font-weight: 600;
+    top: 35%;
+    color: white;
+    position: absolute;
+}
+
+.landingPageSearchBar {
+  width: 50%;
+  border: 1px solid grey;
+  padding: 15px;
+  height: 20px;
+  border-radius: 10px;
+  outline: none;
+  color: #9DBFAF;
+  font-size: 15px;
+  margin-top: 30px;
+  position: absolute;
+}
+
+
+.scrollable_college_bar_landing_page {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+
+
+.scrollable_college_image {
+    display: flex;
+    width: 100px;
+    /* height: 40px; */
+}
+
+
+.landingPageGraphicsContainer {
+    display: flex;
+    flex-direction: column;
+    /* padding: vertical horizontal */
+    padding: 5% 15%;
+}
+
+.landingPageGraphicContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.landingPageGraphicTextContainer{}
+
+.landingPageGraphicTextHeader {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.landingPageGraphicText {
+    font-size: 15px;
+}
+
+
+.landingPageGraphics {
+    display: flex;
+    width: 250px;
+    height: auto;
+}
