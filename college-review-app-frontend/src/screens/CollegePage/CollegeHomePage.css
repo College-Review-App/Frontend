@@ -11,6 +11,9 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 20px;
+    background-image: url('./360_F_280323674_dCBpaSNTIK19xrftWJ29wLk5WUq5TUkw.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .reviewInfoContainer {

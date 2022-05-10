@@ -37,12 +37,23 @@ function HomePage() {
   };
 
   return (
-    <div>
+    <div className='landingPageContainer'>
       {/* <button onClick={() => addCollege()}>Add College</button> */}
       <div className="landingPageSearchBarContainer">
         <img className="landingPageSearchBarBackgroundImage"src={SearchBarBackgroundImage}/>
         <div className="landingPageSearchBarHeader">The #1 Site to See College Data</div>
         <input className="landingPageSearchBar" type="text" placeholder='Search for a College' />
+      </div>
+      <div className='featuredCollegesGreyRowContainer'>
+        <img className='featuredCollegesLogo' src={GeorgiaTechLogo}/>
+        <img className='featuredCollegesLogo' src={StanfordLogo}/>
+        <img className='featuredCollegesLogo' src={UCBerkeleyLogo}/>
+        <img className='featuredCollegesLogo' src={UniversityOfMichiganLogo}/>
+        <img className='featuredCollegesLogo' src={UniversityOfWashingtonLogo}/>
+      </div>
+
+      <div className='landingPageFeatureGraphicsContainer'>
+
       </div>
 
       {/* <div>This is Colley.</div> */}

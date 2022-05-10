@@ -4,6 +4,7 @@ import './header.css';
 import HeaderLogo from './colleyLogo.png';
 import { Input, InputLeftElement, InputGroup } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
+import { getColleges } from '../../global';
 
 // Header:
 
@@ -17,6 +18,11 @@ import { SearchIcon } from '@chakra-ui/icons';
 function Header() {
   // const navigate = useNavigate();
   const location = useLocation();
+
+  const filterBySearch = (input: String) => {
+    const colleges = getColleges();
+    console.log(colleges)
+  }
 
   return (
     <header className="headerContainer">
@@ -40,7 +46,7 @@ function Header() {
       </div> */}
 
       {location.pathname === '/' ? null : (
-        <InputGroup>
+        <InputGroup width={'50%'}>
           <InputLeftElement
             pointerEvents="none"
             children={<SearchIcon color="gray.300" />}
@@ -48,8 +54,8 @@ function Header() {
           <Input
             type="search"
             size={'md'}
-            width="50%"
             placeholder="Search for College"
+            onChange={(e) => filterBySearch(e.target.value.toLowerCase())}
             _placeholder={{ opacity: 0.4, color: 'grey.500' }}
             variant="filled"
           />

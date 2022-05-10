@@ -59,7 +59,7 @@ function CollegeHomePage() {
         </div>
         <div className="applicantReviewsRightContainer">
           {applicants.map((applicantReview) => (
-            <Review review={applicantReview} />
+            <Review review={applicantReview} key={applicantReview.getReviewId} />
           ))}
         </div>
         
