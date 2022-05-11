@@ -3,6 +3,9 @@
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 999;
     /* padding: vertical horizontal */
     padding: 1% 10%;
     justify-content: space-between;
