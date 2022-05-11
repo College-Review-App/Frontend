@@ -1,5 +1,4 @@
 import './App.css';
-import { ThemeProvider, theme} from '@chakra-ui/react';
 import RouterHQ from './RouterHQ';
 import { useEffect } from 'react';
 import { setColleges } from './global';
@@ -34,9 +33,7 @@ function App() {
 
   return (
     // (backendConnected ? 
-      <ThemeProvider theme={theme}>
-        <RouterHQ />
-      </ThemeProvider>
+      <RouterHQ />
     //   : 
     //   <h1>Failed</h1>
     // )

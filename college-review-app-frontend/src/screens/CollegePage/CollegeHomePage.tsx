@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  Heading,
-  Stat,
-  StatNumber,
-  StatHelpText,
-} from '@chakra-ui/react'
 import './CollegeHomePage.css';
 import Review from '../../components/Review/review';
 import applicantReview from '../../interfaces/applicantReview';
@@ -20,7 +14,7 @@ function CollegeHomePage() {
 
   useEffect(() => {
     getInformationForCollege();
-  }, []);
+  }, [collegeName]);
 
   const getInformationForCollege = () => {
     const requestOptions = {
@@ -38,7 +32,6 @@ function CollegeHomePage() {
           temp.push(new applicantReview(element));
         })
         setApplicants(temp);
-
       })
       .catch((error) => {
         console.log('There was an error!', error);
@@ -48,14 +41,12 @@ function CollegeHomePage() {
   return (
     <div className="collegePageContainer">
       <div className="collegeInfoContainer">
-        <Heading>This is the page for {collegeName}</Heading>
+        <h1 className='collegeName'>This is the page for {collegeInfo.getCollegeName}</h1>
       </div>
       <div className="reviewInfoContainer">
         <div className="reviewStatsLeftContainer">
-          <Stat border={"solid"}>
-            <StatNumber>~3.72</StatNumber>
-            <StatHelpText>GPA</StatHelpText>
-          </Stat>
+          <p>~3.72</p>
+          <p>GPA</p>
         </div>
         <div className="applicantReviewsRightContainer">
           {applicants.map((applicantReview) => (

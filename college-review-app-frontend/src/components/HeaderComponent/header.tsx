@@ -1,10 +1,9 @@
-import React from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
-import './header.css';
-import HeaderLogo from './colleyLogo.png';
-import { Input, InputLeftElement, InputGroup } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
-import { getColleges } from '../../global';
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import "./header.css";
+import HeaderLogo from "./colleyLogo.png";
+import { fetchCollegesOnRender, getColleges } from "../../global";
+import { Autocomplete, TextField } from "@mui/material";
 
 // Header:
 
@@ -16,12 +15,28 @@ import { getColleges } from '../../global';
 //use navigate to do it yourself (form sumbissions)
 
 function Header() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
+  const [colleges, setColleges] = useState<String[]>([]);
 
-  const filterBySearch = (input: String) => {
-    const colleges = getColleges();
-    console.log(colleges)
+  useEffect(() => {
+    let allColleges = getColleges();
+    collegesNotFetched(allColleges);
+  }, []);
+
+  // Checks to see if this useEffect has triggered before the API call to get
+  // all the colleges has finished. If so, makes the API call again and waits
+  // until it finished before set colleges.
+  async function collegesNotFetched(allColleges: JSON) {
+    if (!allColleges) {
+      await fetchCollegesOnRender();
+      allColleges = getColleges();
+    }
+    let temp: String[] = [];
+    Object(allColleges).forEach((curr: Object) => {
+      temp.push(Object(curr)["collegeName"]);
+    });
+    setColleges(temp);
   }
 
   return (
@@ -45,21 +60,19 @@ function Header() {
         />
       </div> */}
 
-      {location.pathname === '/' ? null : (
-        <InputGroup width={'50%'}>
-          <InputLeftElement
-            pointerEvents="none"
-            children={<SearchIcon color="gray.300" />}
-          />
-          <Input
-            type="search"
-            size={'md'}
-            placeholder="Search for College"
-            onChange={(e) => filterBySearch(e.target.value.toLowerCase())}
-            _placeholder={{ opacity: 0.4, color: 'grey.500' }}
-            variant="filled"
-          />
-        </InputGroup>
+      {location.pathname === "/" ? null : (
+        <Autocomplete
+          disablePortal
+          onChange={(e) => {
+            const element = e.target as HTMLInputElement;
+            const value = element.innerHTML;
+            navigate(`./colleges/${value}`);
+          }}
+          id="combo-box-demo"
+          options={colleges}
+          sx={{ width: "50%", height: "10" }}
+          renderInput={(params) => <TextField {...params} label="Search for a college" />}
+        />
       )}
 
       <div className="navbarContainer">
