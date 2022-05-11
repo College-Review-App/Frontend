@@ -53,11 +53,35 @@ function HomePage() {
       </div>
 
       <div className='landingPageFeatureGraphicsContainer'>
-
+        <div className='featureGraphicContainer'>
+          <img src={LandingPageGraphic1} />
+          <h1>Unrivaled Insights</h1>
+          <p>
+            Unlock the information and advice you need to get accepted into
+            the college of your dreams.
+          </p>
+        </div>
+        <div className='featureGraphicContainer'>
+          <img src={LandingPageGraphic3} />
+          <h1>Increased Visibility</h1>
+          <p>
+            View verified data on past applications to top colleges around the
+            country.
+          </p>
+        </div>
+        <div className='featureGraphicContainer'>
+          <img src={LandingPageGraphic2} />
+          <h1>Crowdsourcing, with Privacy</h1>
+          <p>
+            Add your own college application experiences to help out other
+            students, while maintaining complete privacy.
+          </p>
+        </div>
+        
       </div>
 
       {/* <div>This is Colley.</div> */}
-      <div className="landingPageGraphicsContainer">
+      {/* <div className="landingPageGraphicsContainer">
         <div className="landingPageGraphicContainer">
           <div className="landingPageGraphicTextContainer">
             <div className="landingPageGraphicTextHeader">Crowdsourcing, with Privacy</div>
@@ -88,7 +112,7 @@ function HomePage() {
           </div>
           <img className="landingPageGraphics" src={LandingPageGraphic3} />
         </div>
-      </div>
+      </div> */}
 
       {/* <div className='scrollable_college_bar_landing_page'>
             <img className="scrollable_college_image" src={StanfordLogo} />

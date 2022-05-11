@@ -14,6 +14,8 @@
     background-image: url('./360_F_280323674_dCBpaSNTIK19xrftWJ29wLk5WUq5TUkw.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    box-shadow: inset 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: inset 20px black ;
 }
 
 .reviewInfoContainer {

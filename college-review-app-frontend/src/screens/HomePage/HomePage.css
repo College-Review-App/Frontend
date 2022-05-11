@@ -64,11 +64,37 @@
 }
 
 .landingPageFeatureGraphicsContainer {
-    margin-top: 10vh;
-    background-color: #798EE1;
+    margin: 18vh 0px;
     border-radius: 20px;
-    height: 20vh;
-    width: 80%;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.featureGraphicContainer {
+    width: 25%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    /* border: 0.25px solid black; */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.featureGraphicContainer > h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.featureGraphicContainer > p {
+    color: #767676;
+}
+
+.featureGraphicContainer > img {
+    width: 100px;
 }
 
 .scrollable_college_bar_landing_page {
