@@ -45,13 +45,17 @@ function HomePage() {
         <input className="landingPageSearchBar" type="text" placeholder='Search for a College' />
       </div>
       <div className='featuredCollegesGreyRowContainer'>
-        <img className='featuredCollegesLogo' src={GeorgiaTechLogo}/>
-        <img className='featuredCollegesLogo' src={StanfordLogo}/>
-        <img className='featuredCollegesLogo' src={UCBerkeleyLogo}/>
-        <img className='featuredCollegesLogo' src={UniversityOfMichiganLogo}/>
-        <img className='featuredCollegesLogo' src={UniversityOfWashingtonLogo}/>
+        {/* could do "Colleges you know and love, all on Colley." */}
+        <div className="featuredCollegesGreyRowHeader">Hundreds of Colleges all on Colley</div> 
+        <div className='featuredCollegesGreyRowCollegesContainer'>
+          <img className='featuredCollegesLogo' src={GeorgiaTechLogo}/>
+          <img className='featuredCollegesLogo' src={StanfordLogo}/>
+          <img className='featuredCollegesLogo' src={UCBerkeleyLogo}/>
+          <img className='featuredCollegesLogo' src={UniversityOfMichiganLogo}/>
+          <img className='featuredCollegesLogo' src={UniversityOfWashingtonLogo}/>
+        </div>
       </div>
-
+      <div className="landingPageFeatureGraphicsHeadline">What we offer:</div>
       <div className='landingPageFeatureGraphicsContainer'>
         <div className='featureGraphicContainer'>
           <img src={LandingPageGraphic1} />
