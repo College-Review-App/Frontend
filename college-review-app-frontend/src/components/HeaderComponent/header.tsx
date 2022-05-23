@@ -4,6 +4,7 @@ import "./header.css";
 import HeaderLogo from "./colleyLogo.png";
 import { fetchCollegesOnRender, getColleges } from "../../global";
 import { Autocomplete, TextField } from "@mui/material";
+import CollegeSearchBar from "../CollegeSearchBar/CollegeSearchBar";
 
 // Header:
 
@@ -61,18 +62,22 @@ function Header() {
       </div> */}
 
       {location.pathname === "/" ? null : (
-        <Autocomplete
-          disablePortal
-          onChange={(e) => {
-            const element = e.target as HTMLInputElement;
-            const value = element.innerHTML;
-            navigate(`./colleges/${value}`);
-          }}
-          id="combo-box-demo"
-          options={colleges}
-          sx={{ width: "50%", height: "10" }}
-          renderInput={(params) => <TextField {...params} label="Search for a college" />}
-        />
+        <CollegeSearchBar />
+        // <Autocomplete
+        //   disablePortal
+        //   // disableClearable={true}
+        //   onChange={(e) => {
+        //     const element = e.target as HTMLInputElement;
+        //     const value = element.innerHTML;
+        //     if (value.length > 4 && value.length < 50) {
+        //       navigate(`./colleges/${value}`);
+        //     }
+        //   }}
+        //   id="combo-box-demo"
+        //   options={colleges}
+        //   sx={{ width: "50%", height: "10" }}
+        //   renderInput={(params) => <TextField {...params} label="Search for a college" />}
+        // />
       )}
 
       <div className="navbarContainer">

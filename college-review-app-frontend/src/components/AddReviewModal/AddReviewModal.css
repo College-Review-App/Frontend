@@ -1,0 +1,76 @@
+.modalContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 85%;
+    background-color: white;
+    overflow-y: scroll;
+    padding: 30px 45px 30px 30px;
+}
+
+.userFormContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.userFormContainer > label {
+    margin-top: 10px;
+}
+
+.modalTextInput {
+    margin-top: 5px;
+    width: 100%;
+    padding-left: 8px;
+    height: 30px;
+    outline: none;
+}
+
+/* .modalTextInput:hover {
+    border-width: 2px;
+    border-color: #3eb489;
+    border-style: solid;
+} */
+
+.modalTextInput:focus {
+    border-width: 2px;
+    border-color: #3eb489;
+    border-style: solid;
+}
+
+.modalTextArea {
+    margin-top: 5px;
+    width: 100%;
+    padding-left: 8px;
+    padding-top: 8px;
+    outline: none;
+    height: 100px;
+}
+
+/* .modalTextArea:hover {
+    border-width: 2px;
+    border-color: #3eb489;
+    border-style: solid;
+} */
+
+.modalTextArea:focus {
+    border-width: 2px;
+    border-color: #3eb489;
+    border-style: solid;
+}
+
+.invalidInputWarning {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.modalSubmitButton {
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid black;
+}

@@ -18,6 +18,7 @@ import UCBerkeleyLogo from './images/UCBerkeley.png';
 import UIUCLogo from './images/UniversityOfIllinois.png';
 import GeorgiaTechLogo from './images/GeorgiaTech.png';
 import UniversityOfTexasLogo from './images/UniversityOfTexas.png';
+import CollegeSearchBar from '../../components/CollegeSearchBar/CollegeSearchBar';
 
 //Webfont Loader Import 
 // import WebFont from 'webfontloader';
@@ -49,11 +50,10 @@ function HomePage() {
 
   return (
     <div className='landingPageContainer'>
-      {/* <button onClick={() => addCollege()}>Add College</button> */}
       <div className="landingPageSearchBarContainer">
-        <img className="landingPageSearchBarBackgroundImage"src={SearchBarBackgroundImage}/>
-        <div className="landingPageSearchBarHeader">The #1 Site to See College Data</div>
-        <input className="landingPageSearchBar" type="text" placeholder='Search for a College' />
+        {/* <img className="landingPageSearchBarBackgroundImage"src={SearchBarBackgroundImage}/> */}
+        {/* <div className="landingPageSearchBarHeader">The #1 Site to See College Data</div> */}
+        <CollegeSearchBar />
       </div>
       <div className='featuredCollegesGreyRowContainer'>
         {/* could do "Colleges you know and love, all on Colley." */}
@@ -66,7 +66,9 @@ function HomePage() {
           <img className='featuredCollegesLogo' src={UniversityOfWashingtonLogo}/>
         </div>
       </div>
-      <div className="landingPageFeatureGraphicsHeadline">What we offer:</div>
+      <div className="landingPageFeatureGraphicsHeadline">
+        <h1>What we offer</h1>
+      </div>
       <div className='landingPageFeatureGraphicsContainer'>
         <div className='featureGraphicContainer'>
           <img src={LandingPageGraphic1} />
@@ -94,51 +96,6 @@ function HomePage() {
         </div>
         
       </div>
-
-      {/* <div>This is Colley.</div> */}
-      {/* <div className="landingPageGraphicsContainer">
-        <div className="landingPageGraphicContainer">
-          <div className="landingPageGraphicTextContainer">
-            <div className="landingPageGraphicTextHeader">Crowdsourcing, with Privacy</div>
-            <div className="landingPageGraphicText">
-              Add your own college application experiences to help out other
-              prospective students, all while maintaining complete privacy.
-            </div>
-          </div>
-          <img className="landingPageGraphics" src={LandingPageGraphic1} />
-        </div>
-        <div className="landingPageGraphicContainer">
-          <div className="landingPageGraphicTextContainer">
-            <div className="landingPageGraphicTextHeader">Increased Visibility</div>
-            <div className="landingPageGraphicText">
-              View verified data on past applications to top colleges around the
-              country.
-            </div>
-          </div>
-          <img className="landingPageGraphics" src={LandingPageGraphic2} />
-        </div>
-        <div className="landingPageGraphicContainer">
-          <div className="landingPageGraphicTextContainer">
-            <div className="landingPageGraphicTextHeader">Unrivaled Insights</div>
-            <div className="landingPageGraphicText">
-              Unlock the information and advice you need to get accepted into
-              the college of your dreams.
-            </div>
-          </div>
-          <img className="landingPageGraphics" src={LandingPageGraphic3} />
-        </div>
-      </div> */}
-
-      {/* <div className='scrollable_college_bar_landing_page'>
-            <img className="scrollable_college_image" src={StanfordLogo} />
-            <img className="scrollable_college_image" src={UniversityOfWashingtonLogo} />
-            <img className="scrollable_college_image" src={UniversityOfMichiganLogo} />
-            <img className="scrollable_college_image" src={UCLALogo} />
-            <img className="scrollable_college_image" src={UCBerkeleyLogo} />
-            <img className="scrollable_college_image" src={UIUCLogo} />
-            <img className="scrollable_college_image" src={GeorgiaTechLogo} />
-            <img className="scrollable_college_image" src={UniversityOfTexasLogo} />
-        </div> */}
     </div>
   );
 }
