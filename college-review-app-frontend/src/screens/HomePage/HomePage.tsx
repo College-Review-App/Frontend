@@ -19,6 +19,9 @@ import UIUCLogo from './images/UniversityOfIllinois.png';
 import GeorgiaTechLogo from './images/GeorgiaTech.png';
 import UniversityOfTexasLogo from './images/UniversityOfTexas.png';
 
+//Webfont Loader Import 
+// import WebFont from 'webfontloader';
+
 function HomePage() {
   const addCollege = () => {
     const requestOptions = {
@@ -35,6 +38,14 @@ function HomePage() {
         console.log('There was an error!', error);
       });
   };
+
+  // useEffect(() => {
+  //   WebFont.load({
+  //     google: {
+  //       families: ['Poppins', 'Hellix'],
+  //     },
+  //   });
+  // }, []);
 
   return (
     <div className='landingPageContainer'>
