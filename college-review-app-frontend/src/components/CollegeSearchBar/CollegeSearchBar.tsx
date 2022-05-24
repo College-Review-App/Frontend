@@ -32,7 +32,6 @@ const CollegeSearchBar = () => {
     <Autocomplete
       className="collegeSearchBar"
       disablePortal
-      // disableClearable={true}
       onChange={(e) => {
         const element = e.target as HTMLInputElement;
         const value = element.innerHTML;

@@ -7,7 +7,13 @@
     height: 85%;
     background-color: white;
     overflow-y: scroll;
-    padding: 30px 45px 30px 30px;
+    padding: 30px 42px 30px 30px;
+}
+
+.modalHeaderContainer {
+    width: 101%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .userFormContainer {

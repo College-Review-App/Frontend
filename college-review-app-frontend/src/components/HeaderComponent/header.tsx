@@ -49,17 +49,6 @@ function Header() {
           alt="Colley Logo Image"
         />
       </Link>
-      {/* Search Bar */}
-      {/* <div >
-        <input
-          className='headerSearchBar'
-          aria-autocomplete="list"
-          autoComplete="off"
-          autoCorrect="off"
-          spellCheck="false"
-          placeholder="Search For a College"
-        />
-      </div> */}
 
       {location.pathname === "/" ? null : (
         <CollegeSearchBar />

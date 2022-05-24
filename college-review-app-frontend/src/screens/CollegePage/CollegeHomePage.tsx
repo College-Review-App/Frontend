@@ -5,7 +5,8 @@ import Review from '../../components/Review/review';
 import applicantReview from '../../interfaces/applicantReview';
 import college from '../../interfaces/college';
 import { MdLocationOn } from 'react-icons/md';
-import {BsPencilSquare} from 'react-icons/bs';
+import { BsPencilSquare } from 'react-icons/bs';
+import AddReviewModal from '../../components/AddReviewModal/AddReviewModal';
 
 function CollegeHomePage() {
   //collegeName field that we pass through the Url to relay information
@@ -13,6 +14,10 @@ function CollegeHomePage() {
 
   const [collegeInfo, setCollegeInfo] = useState<college>(new college());
   const [applicants, setApplicants] = useState<applicantReview[]>([]);
+
+  // State variables for the add review modal
+  const [refresh, setRefresh] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     getInformationForCollege();
@@ -45,6 +50,7 @@ function CollegeHomePage() {
 
   return (
     <div className="collegePageContainer">
+      <AddReviewModal refresh={refresh} open={modalOpen}/>
       <div className="collegeInfoContainer">
         <div className="collegeInfoTextContainer">
           {/* should be {collegeInfo.getCollegeName} but my backend isnt running lol */}
@@ -74,7 +80,7 @@ function CollegeHomePage() {
             <div className="reviewStatHeadlineText">Average ACT Scores</div>
           </div>
           <div className="reviewStatDataButton">
-          <div className="reviewStatDataButtonText">Click for More Data!</div>
+            <button className="reviewStatDataButtonText">Click for More Data!</button>
           </div>
         </div>
         <div className="applicantReviewsRightContainer">
@@ -86,10 +92,10 @@ function CollegeHomePage() {
           ))} */}
           <div className='applicantReviewRightHeaderContainer'>
             <div className="allReviewsText">All Reviews</div>
-            <div className="writeReviewButton">
+            <button className="writeReviewButton" onClick={() => {setRefresh(!refresh); setModalOpen(true)}}>
               <div style={{color: 'white', fontWeight: '500'}}>Write a Review </div>
               <BsPencilSquare color='white' fontWeight={'bold'}/> 
-            </div>
+            </button>
           </div>
           <Review />
           <Review />

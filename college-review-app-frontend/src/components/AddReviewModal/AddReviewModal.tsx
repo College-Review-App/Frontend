@@ -1,38 +1,61 @@
-import { FormControlLabel, Modal, Radio, RadioGroup } from "@mui/material";
+import { FormControlLabel, Modal, Radio, RadioGroup, Autocomplete, TextField } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 import { useEffect, useState } from "react";
 import "./AddReviewModal.css";
 
 const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) => {
+  let raceOptions: string[] = ['Apple', 'Orange', 'Banana'];
+
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const handleClose = () => setModalOpen(false);
+  const handleClose = () => {
+    setModalOpen(false);
+    setInvalidMajor(false);
+    setInvalidGPA(false);
+    setInvalidOutcome(false);
+  };
 
   useEffect(() => {
     setModalOpen(open);
   }, [refresh]);
 
-  //state fields for user input form asked to an applicant
+  // state fields for user input form asked to an applicant
   const [city, setCity] = useState<string>("");
   const [state, setState] = useState<string>("");
   const [country, setCountry] = useState<string>("");
   const [race, setRace] = useState<string>("");
   const [gender, setGender] = useState<number>(-1);
   const [familyIncome, setFamilyIncome] = useState<number>(-1);
-  const [highschool, setHighschool] = useState<string>("");
   const [GPA, setGPA] = useState<number>();
-  const [invalidGPA, setInvalidGPA] = useState<boolean>(false);
-  const [SAT, setSAT] = useState<number>(-1);
-  const [ACT, setACT] = useState<number>(-1);
+  const [SAT, setSAT] = useState<number>();
+  const [ACT, setACT] = useState<number>();
   const [intendedMajor, setIntendedMajor] = useState<string>("");
   const [extracurriculars, setExtracurriculars] = useState<string>("");
   const [advice, setAdvice] = useState<string>("");
-  const [outcome, setOutcome] = useState<number>(-1);
-  const [isVerified, setIsVerified] = useState<boolean>(false);
+  const [outcome, setOutcome] = useState<number>();
+
+  // invalid states for user inputs
+  const [invalidGPA, setInvalidGPA] = useState<boolean>(false);
+  const [invalidMajor, setInvalidMajor] = useState<boolean>(false);
+  const [invalidOutcome, setInvalidOutcome] = useState<boolean>(false);
+
 
   const handleSubmit = () => {
     console.log(GPA);
     if (!GPA || GPA > 4.0 || GPA < 0.0) {
       setInvalidGPA(true);
     }
+    if (outcome == null || outcome == undefined) {
+      setInvalidOutcome(true);
+    }
+    if (intendedMajor === "" || intendedMajor == undefined || intendedMajor ==null) {
+      setInvalidMajor(true);
+    }
+    // if (!SAT) {
+    //   setSAT(-1);
+    // }
+    // if (!ACT) {
+    //   setACT(-1);
+    // }
   }
 
   //   const addApplicationtoDatabase = () => {
@@ -72,6 +95,12 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
   return (
     <Modal open={modalOpen} onClose={handleClose}>
       <div className="modalContainer">
+        <div className="modalHeaderContainer">
+          <CloseIcon 
+            onClick={() => handleClose()}
+            fontSize="medium" 
+          />
+        </div>
         <form>
           <div className="userFormContainer">
             <label>
@@ -111,8 +140,15 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
               />
             </label>
             <label>
-              Race:
-              <input
+              {/* Race: */}
+              <Autocomplete
+                options={raceOptions} 
+                size="small"
+                renderInput={(params) => (
+                  <TextField {...params} label="Race" />
+                )}
+              />
+              {/* <input
                 className="modalTextInput"
                 type="text"
                 name="race"
@@ -120,7 +156,7 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
                 onChange={(text) => {
                   setRace(text.target.value);
                 }}
-              />
+              /> */}
             </label>
             <label>
               Gender:
@@ -177,21 +213,10 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
               </RadioGroup>
             </label>
             <label>
-              Highschool:
-              <input
-                className="modalTextInput"
-                type="text"
-                name="highschool"
-                value={highschool}
-                onChange={(text) => {
-                  setHighschool(text.target.value);
-                }}
-              />
-            </label>
-            <label>
               GPA
               <input
                 className="modalTextInput"
+                onWheelCapture={e => {e.currentTarget.blur()}}
                 type="number"
                 name="GPA"
                 onChange={(number) => {
@@ -207,6 +232,7 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
               SAT
               <input
                 className="modalTextInput"
+                onWheelCapture={e => {e.currentTarget.blur()}}
                 type="number"
                 name="SAT"
                 value={SAT}
@@ -217,6 +243,7 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
               ACT
               <input
                 className="modalTextInput"
+                onWheelCapture={e => {e.currentTarget.blur()}}
                 type="number"
                 name="ACT"
                 value={ACT}
@@ -224,7 +251,7 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
               />
             </label>
             <label>
-              Intended Major:
+              Intended Major*
               <input
                 className="modalTextInput"
                 type="text"
@@ -232,8 +259,12 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
                 value={intendedMajor}
                 onChange={(text) => {
                   setIntendedMajor(text.target.value);
+                  setInvalidMajor(false);
                 }}
               />
+              {invalidMajor && (
+                <p className="invalidInputWarning">Intended major is required</p>
+              )}
             </label>
             <label>
               Extracurriculars:
@@ -258,7 +289,7 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
               />
             </label>
             <label>
-              Outcome:
+              Outcome*
               <RadioGroup
                 row
                 aria-labelledby="outcome-radio-buttons-group"
@@ -268,38 +299,25 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
                   value="Accepted"
                   control={<Radio />}
                   label="Accepted"
-                  onChange={() => setOutcome(1)}
+                  onChange={() => {
+                    setOutcome(1);
+                    setInvalidOutcome(false)
+                  }}
                 />
                 <FormControlLabel
-                  value="Rejected"
+                  value="Denied"
                   control={<Radio />}
-                  label="Rejected"
-                  onChange={() => setOutcome(0)}
+                  label="Denied"
+                  onChange={() => {
+                    setOutcome(0);
+                    setInvalidOutcome(false)
+                  }}
                 />
               </RadioGroup>
+              {invalidOutcome && (
+                <p className="invalidInputWarning">Outcome is required</p>
+              )}
             </label>
-            <label>
-              Verified:
-              <RadioGroup
-                row
-                aria-labelledby="outcome-radio-buttons-group"
-                name="outcomeRadioButtons"
-              >
-                <FormControlLabel
-                  value="True"
-                  control={<Radio />}
-                  label="True"
-                  onChange={() => setIsVerified(true)}
-                />
-                <FormControlLabel
-                  value="False"
-                  control={<Radio />}
-                  label="False"
-                  onChange={() => setIsVerified(false)}
-                />
-              </RadioGroup>
-            </label>
-            
           </div>
         </form>
         <button 

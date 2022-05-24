@@ -1,9 +1,9 @@
 import './App.css';
 import RouterHQ from './RouterHQ';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setColleges } from './global';
-import { useState } from 'react';
 import serverError from './serverError.png'
+import WebFont from 'webfontloader';
 
 function App() {
   // Boolean of whether the connection to the backend has succeeded.
@@ -12,6 +12,14 @@ function App() {
   useEffect(() => {
     fetchCollegesOnRender();
   }, []);
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Open Sans', 'Poppins', 'Montserrat']
+      }
+    });
+  }, [])
 
   const fetchCollegesOnRender = () => {
     const requestOptions = {
