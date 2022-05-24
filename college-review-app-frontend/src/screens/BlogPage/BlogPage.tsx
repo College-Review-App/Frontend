@@ -1,8 +1,9 @@
 import React from 'react'
+import ComingSoon from '../../components/ComingSoonComponent/comingSoon'
 
 function BlogPage() {
   return (
-    <div>BlogPage</div>
+    <ComingSoon/>
   )
 }
 

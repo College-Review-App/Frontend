@@ -7,6 +7,24 @@
   pointer-events: none;
 }
 
+.serverErrorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.serverErrorImage {
+  width: 700px;
+  height: auto;
+  object-fit: cover;
+}
+
+.serverErrorText {
+  font-size: 18px;
+  font-weight: 500;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -2,8 +2,8 @@ import './App.css';
 import RouterHQ from './RouterHQ';
 import { useEffect } from 'react';
 import { setColleges } from './global';
-import { useState } from 'react'; 
-
+import { useState } from 'react';
+import serverError from './serverError.png'
 
 function App() {
   // Boolean of whether the connection to the backend has succeeded.
@@ -11,14 +11,14 @@ function App() {
 
   useEffect(() => {
     fetchCollegesOnRender();
-  }, [])
+  }, []);
 
   const fetchCollegesOnRender = () => {
     const requestOptions = {
       method: 'GET',
     };
     fetch(`http://localhost:8080/get-colleges`, requestOptions)
-      .then(async response => {
+      .then(async (response) => {
         const data = await response.json();
         setColleges(data);
       })
@@ -29,15 +29,17 @@ function App() {
         setBackendConnected(false);
         console.log('There was an error!', error);
       });
-  }
+  };
 
-  return (
-    // (backendConnected ? 
-      <RouterHQ />
-    //   : 
-    //   <h1>Failed</h1>
-    // )
-    
+  return backendConnected ? (
+    <RouterHQ />
+  ) : (
+    <div className="serverErrorContainer">
+      <img className='serverErrorImage' src={serverError}/>
+      <div className="serverErrorText">
+        Don't panic! Seems like something is broken on our end! We are on it!
+      </div>
+    </div>
   );
 }
 

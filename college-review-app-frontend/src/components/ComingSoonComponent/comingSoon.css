@@ -1,0 +1,37 @@
+.comingSoonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    align-items: center;
+    /* background-image: url(./comingSoonDogsImage.jpg);
+    background-position: 'center';
+    background-size: 'contain';
+    background-repeat: 'no-repeat'; */
+}
+
+.comingSoonText {
+    margin-top: 10%;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.comingSoonSubtitleText {
+    margin-top: 1%;
+    font-size: 18px
+}
+
+.meantimeText {
+    margin-top: 10%;
+    font-size: 15px;
+    /* background-color: #62D2A2; */
+}
+
+.colleyTextComingSoon {
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: #62D2A2;
+}
