@@ -30,7 +30,7 @@ const RouterHQ: React.VFC = () => {
        <Route path="*" element={<Error404/>} />
       </Routes>
 
-      <Footer onClick={() => window.scrollTo(0,0)}/>
+      <Footer />
 
     </Router>
   )

@@ -20,9 +20,11 @@ import PlacesAutocomplete from "react-places-autocomplete";
 const AddReviewModal = ({
   refresh,
   open,
+  collegeName
 }: {
   refresh: boolean;
   open: boolean;
+  collegeName: string;
 }) => {
   let ethnicityOptions: string[] = [
     "American Indian or Alaskan Native", "Asian", "Hispanic/Latino",
@@ -62,19 +64,31 @@ const AddReviewModal = ({
     setInvalidIncome(false);
     setInvalidExtracurriculars(false);
     setInvalidAdvice(false);
+    setInvalidMajor(false);
 
     setGender(undefined);
     setFamilyIncome(undefined);
     setOutcome(undefined);
+    setIntendedMajor("");
+    setEthnicity(undefined);
+    setClassOf(undefined);
     setFirstGenStudent(false);
+    setLegacyStudent(false);
     setGPA(undefined);
     setLocation("");
-    setExtracurricularArray([""])
+    setLocationText("");
+    setExtracurricularArray([""]);
+    setAdvice("");
+    setCanSubmit(true);
   };
 
   useEffect(() => {
     setModalOpen(open);
   }, [refresh]);
+
+  // Boolean that enables the user to submit the modal, should be false right
+  // after a request is made and being processed.
+  const [canSubmit, setCanSubmit] = useState<boolean>(true);
 
   // state fields for user input form asked to an applicant
   const [location, setLocation] = useState<string>("");
@@ -83,6 +97,7 @@ const AddReviewModal = ({
   const [locationText, setLocationText] = useState<string>("");
   const [classOf, setClassOf] = useState<number>();
   const [firstGenStudent, setFirstGenStudent] = useState<boolean>(false);
+  const [legacyStudent, setLegacyStudent] = useState<boolean>(false);
   const [ethnicity, setEthnicity] = useState<string>();
   const [gender, setGender] = useState<number>();
   const [familyIncome, setFamilyIncome] = useState<number>();
@@ -95,7 +110,7 @@ const AddReviewModal = ({
   const [extracurricularArray, setExtracurricularArray] = useState<string[]>([
     "",
   ]);
-  const [advice, setAdvice] = useState<string>();
+  const [advice, setAdvice] = useState<string>("");
   const [outcome, setOutcome] = useState<number>();
 
   // invalid states for user inputs
@@ -111,6 +126,9 @@ const AddReviewModal = ({
   const [invalidIncome, setInvalidIncome] = useState<boolean>(false);
   const [invalidExtracurriculars, setInvalidExtracurriculars] = useState<boolean>(false);
   const [invalidAdvice, setInvalidAdvice] = useState<boolean>(false);
+
+  const [addProfileSubmissionError, setAddProfileSubmissionError] = useState<boolean>(false);
+
 
   const handleAddExtracurricular = () => {
     if (extracurricularArray.length < 5) {
@@ -198,8 +216,37 @@ const AddReviewModal = ({
       setInvalidExtracurriculars(true);
       validSubmission = false;
     }
-    console.log(validSubmission)
+    if (validSubmission) {
+      submitProfileForm();
+    }
   };
+
+  const submitProfileForm = () => {
+    setCanSubmit(false);
+    let locationArr = location.split(',');
+    locationArr.forEach((text, index) => {
+      locationArr[index] = text.trim();
+    })
+    let city: string = "";
+    let state: string = "";
+    let country: string = "";
+    if (locationArr.length === 3) {
+      city = locationArr[0];
+      state = locationArr[1];
+      country = locationArr[2];
+    } else {
+      city = locationArr[0];
+      country = locationArr[1];
+    }
+    let extracurricularsText: string = "";
+    extracurricularArray.forEach((ec) => {
+      if (ec != "") {
+        extracurricularsText += ec + "|+=+|"
+      }
+    })
+    extracurricularsText = extracurricularsText.substring(0, extracurricularsText.length - 5);
+    addApplicationToDatabase(city, state, country, extracurricularsText);
+  }
 
   const extracurricularsValid = () => {
     const numExtracurriculars = extracurricularArray.length;
@@ -220,39 +267,44 @@ const AddReviewModal = ({
     return valid
   }
 
-  //   const addApplicationToDatabase = () => {
-  //     const requestOptions = {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         city: city,
-  //         state: state,
-  //         country: country,
-  //         race: race,
-  //         gender: gender,
-  //         familyIncome: familyIncome,
-  //         highschool: highschool,
-  //         GPA: GPA,
-  //         SAT: SAT,
-  //         ACT: ACT,
-  //         intendedMajor: intendedMajor,
-  //         extracurriculars: extracurriculars,
-  //         advice: advice,
-  //         outcome: outcome,
-  //         isVerified: isVerified,
-  //       }),
-  //     };
-  //     fetch(
-  //       `http://localhost:8080/add-applications-by-college-name?collegeName=${collegeName}`,
-  //       requestOptions
-  //     )
-  //       .then(async (response) => {
-  //         const data = await response.json();
-  //         console.log(data);
-  //       })
-  //       .catch((error) => {
-  //         console.log("There was an error!", error);
-  //       });
-  //   };
+    const addApplicationToDatabase = (city: string, state: string, country: string, extracurriculars: string) => {
+      const requestOptions = {
+        method: "POST",
+        body: JSON.stringify({
+          city: city,
+          state: state,
+          country: country,
+          ethnicity: ethnicity,
+          classOf: classOf,
+          firstGen: firstGenStudent,
+          legacyStudent: legacyStudent,
+          gender: gender,
+          familyIncome: familyIncome,
+          GPA: GPA,
+          SAT: tookSAT ? SAT : -1,
+          ACT: tookACT ? ACT : -1,
+          intendedMajor: intendedMajor,
+          extracurriculars: extracurriculars,
+          advice: advice,
+          outcome: outcome,
+        }),
+      };
+      fetch(
+        `http://localhost:8080/add-application-by-college-name?collegeName=${collegeName}`,
+        requestOptions
+      )
+        .then(async (response) => {
+          const data = await response.json();
+          console.log(data);
+          handleClose();
+          setModalOpen(false);
+        })
+        .catch((error) => {
+          console.log("There was an error!", error);
+          setAddProfileSubmissionError(true);
+        });
+      setCanSubmit(true);
+    };
 
   return (
     <Modal open={modalOpen} onClose={handleClose}>
@@ -334,6 +386,16 @@ const AddReviewModal = ({
                 label=""
               />
               I am a first generation student
+            </label>
+            <label>
+              <FormControlLabel
+                control={<Switch />}
+                onChange={() => {
+                  setLegacyStudent(!legacyStudent);
+                }}
+                label=""
+              />
+              I am a legacy student at this college
             </label>
             <label>
               Ethnicity*
@@ -605,9 +667,14 @@ const AddReviewModal = ({
             </label>
           </div>
         </form>
-        <button className="addReviewModalSubmitButton" onClick={() => handleSubmit()}>
+        <button className="addReviewModalSubmitButton" onClick={() => canSubmit ? handleSubmit() : null}>
           Submit
         </button>
+        {addProfileSubmissionError && (
+          <p className="addReviewModalInvalidInputWarning">
+            Sorry, something went wrong with your submission
+          </p>
+        )}
       </div>
     </Modal>
   );

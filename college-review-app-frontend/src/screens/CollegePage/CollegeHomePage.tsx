@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './CollegeHomePage.css';
 import Review from '../../components/Review/review';
 import applicantReview from '../../interfaces/applicantReview';
@@ -7,10 +7,12 @@ import college from '../../interfaces/college';
 import { MdLocationOn } from 'react-icons/md';
 import { BsPencilSquare } from 'react-icons/bs';
 import AddReviewModal from '../../components/AddReviewModal/AddReviewModal';
+import { collegeExists } from '../../global';
 
 function CollegeHomePage() {
   //collegeName field that we pass through the Url to relay information
   let { collegeName } = useParams();
+  const navigate = useNavigate();
 
   const [collegeInfo, setCollegeInfo] = useState<college>(new college());
   const [applicants, setApplicants] = useState<applicantReview[]>([]);
@@ -33,6 +35,11 @@ function CollegeHomePage() {
     )
       .then(async (response) => {
         const data = await response.json();
+        // Navigates to the 404 error page if the college doesn't exist
+        // in the database
+        if (data.message === "Result must not be null!") {
+          navigate('/404error')
+        }
         console.log(data);
         // Parses JSON object into college info and applicant
         // review array
@@ -50,7 +57,7 @@ function CollegeHomePage() {
 
   return (
     <div className="collegePageContainer">
-      <AddReviewModal refresh={refresh} open={modalOpen} />
+      <AddReviewModal refresh={refresh} open={modalOpen} collegeName={collegeName!} />
       <div className="collegeInfoContainer">
         <div className="collegeInfoTextContainer">
           {/* should be {collegeInfo.getCollegeName} but my backend isnt running lol */}

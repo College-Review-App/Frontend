@@ -8,6 +8,10 @@ export const getColleges = () => {
     return colleges;
 }
 
+export const collegeExists = (collegeName: string) => {
+  return Object(colleges)[collegeName];
+}
+
 export const fetchCollegesOnRender = async () => {
     const requestOptions = {
       method: 'GET',

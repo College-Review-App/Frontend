@@ -12,7 +12,7 @@ import { FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
 // Imports the routing things from the React Router
 import { useNavigate, Link } from 'react-router-dom';
 
-function Footer( props : {onClick: () => void} ) {
+function Footer() {
   let navigate = useNavigate();
 
   // Footer:
@@ -22,7 +22,7 @@ function Footer( props : {onClick: () => void} ) {
   // - Contacts
 
   return (
-    <footer className="footerContainer" onClick={props.onClick}>
+    <footer className="footerContainer">
       <div className="logoAndSocialMediaContainer">
         <img
           className="footerColleyImg"
@@ -84,16 +84,16 @@ function Footer( props : {onClick: () => void} ) {
         </div>
         <div className="footerColumnContainer">
           <h4 className="footerColumnHeader">Pages</h4>
-          <Link to="/" className="bottomLinksText">
+          <Link onClick={() => window.scrollTo(0,0)} to="/" className="bottomLinksText">
             Home
           </Link>
-          <Link to="/about" className="bottomLinksText">
+          <Link onClick={() => window.scrollTo(0,0)} to="/about" className="bottomLinksText">
             About
           </Link>
-          <Link to="/blog" className="bottomLinksText">
+          <Link onClick={() => window.scrollTo(0,0)} to="/blog" className="bottomLinksText">
             Blog
           </Link>
-          <Link to="/faq" className="bottomLinksText">
+          <Link onClick={() => window.scrollTo(0,0)} to="/faq" className="bottomLinksText">
             FAQ
           </Link>
         </div>
