@@ -258,7 +258,7 @@ const AddReviewModal = ({
     <Modal open={modalOpen} onClose={handleClose}>
       <div className="addReviewModalContainer">
         <div className="addReviewModalHeaderContainer">
-          <CloseIcon onClick={() => handleClose()} fontSize="medium" />
+          <CloseIcon style={{cursor: 'pointer'}} onClick={() => handleClose()} fontSize="medium" />
         </div>
         <form>
           <div className="addReviewUserFormContainer">
