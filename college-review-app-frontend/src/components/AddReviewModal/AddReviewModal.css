@@ -1,31 +1,38 @@
-.modalContainer {
+.addReviewModalContainer {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 42%;
     height: 85%;
     background-color: white;
     overflow-y: scroll;
-    padding: 30px 42px 30px 30px;
+    padding: 48px 110px 48px 94px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(66, 65, 65, 0.203),
+      0 6px 20px 0 rgba(161, 155, 155, 0.59);
 }
 
-.modalHeaderContainer {
+.addReviewModalContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.addReviewModalHeaderContainer {
     width: 101%;
     display: flex;
     justify-content: flex-end;
 }
 
-.userFormContainer {
+.addReviewUserFormContainer {
     display: flex;
     flex-direction: column;
 }
 
-.userFormContainer > label {
+.addReviewUserFormContainer > label {
     margin-top: 10px;
 }
 
-.modalTextInput {
+.addReviewModalTextInput {
     margin-top: 5px;
     width: 100%;
     padding-left: 8px;
@@ -33,19 +40,13 @@
     outline: none;
 }
 
-/* .modalTextInput:hover {
-    border-width: 2px;
-    border-color: #3eb489;
-    border-style: solid;
-} */
-
-.modalTextInput:focus {
+.addReviewModalTextInput:focus {
     border-width: 2px;
     border-color: #3eb489;
     border-style: solid;
 }
 
-.modalTextArea {
+.addReviewModalTextArea {
     margin-top: 5px;
     width: 100%;
     padding-left: 8px;
@@ -54,25 +55,43 @@
     height: 100px;
 }
 
-/* .modalTextArea:hover {
-    border-width: 2px;
-    border-color: #3eb489;
-    border-style: solid;
-} */
-
-.modalTextArea:focus {
+.addReviewModalTextArea:focus {
     border-width: 2px;
     border-color: #3eb489;
     border-style: solid;
 }
 
-.invalidInputWarning {
+.addReviewModalLocationPicker {
+    margin-top: 5px;
+    width: 100%;
+    padding-left: 8px;
+    height: 30px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.addReviewModalInvalidInputWarning {
     color: red;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 5px;
 }
 
-.modalSubmitButton {
+.addReviewModalExtracurricularsHeaderContainer {
+    margin: none;
+    padding: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: -12px;
+}
+
+.addReviewModalAddExtracurricularsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.addReviewModalSubmitButton {
     height: 40px;
     border-radius: 10px;
     background-color: white;

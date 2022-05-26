@@ -55,7 +55,7 @@ const CollegeSearchBar = () => {
           }
         >Add new college</p>
       }
-      sx={{ width: "50%", height: "10" }}
+      // sx={{ width: "50%", height: "10" }}
       renderInput={(params) => (
         <TextField {...params} label="Search for a college" />
       )}

@@ -8,8 +8,8 @@ import "./header.css";
 
 // Colley Logo Import
 import HeaderLogo from "./colleyLogo.png";
+import SearchIcon from '@mui/icons-material/Search';
 import { fetchCollegesOnRender, getColleges } from "../../global";
-import { Autocomplete, TextField } from "@mui/material";
 import CollegeSearchBar from "../CollegeSearchBar/CollegeSearchBar";
 
 // Header:
@@ -21,16 +21,31 @@ import CollegeSearchBar from "../CollegeSearchBar/CollegeSearchBar";
 //use Link for user navigation
 //use navigate to do it yourself (form sumbissions)
 
-// This component represents the header component for the Colley Website
-
-function Header() {
+function Header( props : {onClick: () => void} ) {
   const navigate = useNavigate();
   const location = useLocation();
   const [colleges, setColleges] = useState<String[]>([]);
+  const [windowWidth, setWindowWidth] = useState(getWindowWidth());
+  const [hiddenSearchBarActive, setHiddenSearchBarActive] = useState<boolean>(false);
+
+  function getWindowWidth() {
+    const { innerWidth: width } = window;
+    return width;
+  }
 
   useEffect(() => {
     let allColleges = getColleges();
     collegesNotFetched(allColleges);
+  }, []);
+
+  // Listens for changes in the window's width
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(getWindowWidth());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Checks to see if this useEffect has triggered before the API call to get
@@ -49,7 +64,7 @@ function Header() {
   }
 
   return (
-    <header className="headerContainer">
+    <header className="headerContainer" onClick={props.onClick}>
       <Link to="/">
         <img
           className="headerColleyImg"
@@ -58,35 +73,45 @@ function Header() {
         />
       </Link>
 
-      {location.pathname === "/" ? null : (
-        <CollegeSearchBar />
-        // <Autocomplete
-        //   disablePortal
-        //   // disableClearable={true}
-        //   onChange={(e) => {
-        //     const element = e.target as HTMLInputElement;
-        //     const value = element.innerHTML;
-        //     if (value.length > 4 && value.length < 50) {
-        //       navigate(`./colleges/${value}`);
-        //     }
-        //   }}
-        //   id="combo-box-demo"
-        //   options={colleges}
-        //   sx={{ width: "50%", height: "10" }}
-        //   renderInput={(params) => <TextField {...params} label="Search for a college" />}
-        // />
+      {location.pathname === "/" || windowWidth < 1200 ? null : (
+          <CollegeSearchBar />
       )}
 
       <div className="navbarContainer">
-        <Link to="/about" className="headerLinkItem">
-          About
-        </Link>
-        <Link to="/blog" className="headerLinkItem">
-          Blog
-        </Link>
-        <Link to="/faq" className="headerLinkItem">
-          FAQ
-        </Link>
+        <div className="hiddenNavbarLinks">
+          <Link to="/about" className="headerLinkItem">
+            About
+          </Link>
+          <Link to="/blog" className="headerLinkItem">
+            Blog
+          </Link>
+          <Link to="/faq" className="headerLinkItem">
+            FAQ
+          </Link>
+        </div>
+        
+        {windowWidth < 1200 ? 
+          <SearchIcon 
+            style={{marginTop: '1px'}} 
+            fontSize="medium" 
+            className="headerLinkItem"
+            // onClick={() => setHiddenSearchBarActive(true)}
+            onClick={() => navigate('/')}
+          />
+          : 
+          <><Link to="/about" className="headerLinkItem">
+            About
+          </Link><Link to="/blog" className="headerLinkItem">
+              Blog
+            </Link><Link to="/faq" className="headerLinkItem">
+              FAQ
+            </Link>
+          </>
+        }
+
+        {/* <div className={hiddenSearchBarActive ? 'hiddenSearchBar active' : 'hiddenSearchBar'}>
+          <CollegeSearchBar />
+        </div> */}
       </div>
     </header>
   );

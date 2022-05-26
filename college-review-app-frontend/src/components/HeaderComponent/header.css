@@ -1,3 +1,19 @@
+@media screen and (max-width: 600px) {
+    .hiddenNavbarLinks {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 600px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+    .hiddenNavbarLinks {
+        display: none;
+    }
+}
+
 .headerContainer {
     display: flex;
     flex-direction: row;
@@ -6,7 +22,6 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    /* padding: vertical horizontal */
     padding: 1% 10%;
     justify-content: space-between;
     background-color: #FCFBFA;
@@ -33,3 +48,20 @@
     color: black;
     cursor: pointer;
 }
+
+/* .hiddenSearchBar {
+    margin-left: 250%;
+    position: absolute;
+    width: 100vw;
+    display: none;
+    transition: all 0.5s ease;
+}
+
+.hiddenSearchBar.active {
+    margin-left: 0%;
+    position: absolute;
+    width: 100vw;
+    border: solid;
+    display: flex;
+    transition: all 0.5s ease;
+} */

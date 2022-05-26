@@ -1,3 +1,107 @@
+@media screen and (max-width: 600px) {
+    .featuredCollegesLogo {
+        width: 15%;
+    }
+
+    .featuredCollegesGreyRowContainer {
+        height: 11vh;
+    }
+
+    .landingPageFeatureGraphicsContainer {
+        width: 70%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 6vh;
+    }
+
+    .featureGraphicContainer {
+        width: 70%;
+        margin-bottom: 10vh;
+    }
+
+    .featureGraphicContainer > img {
+        width: 220px;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 600px) {
+    .featuredCollegesLogo {
+        width: 10%;
+    }
+
+    .featuredCollegesGreyRowContainer {
+        height: 12vh;
+    }
+
+    .landingPageFeatureGraphicsContainer {
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10vh;
+    }
+
+    .featureGraphicContainer {
+        width: 65%;
+        margin-bottom: 8vh;
+    }
+
+    .featureGraphicContainer > img {
+        width: 240px;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 900px) {
+    .featuredCollegesLogo {
+        width: 10%;
+    }
+
+    .featuredCollegesGreyRowContainer {
+        height: 12vh;
+    }
+
+    .landingPageFeatureGraphicsContainer {
+        width: 90%;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-bottom: 18vh;
+    }
+
+    .featureGraphicContainer {
+        width: 25%;
+    }
+
+    .featureGraphicContainer > img {
+        width: 100px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .featuredCollegesLogo {
+        width: 6.5%;
+    }
+
+    .featuredCollegesGreyRowContainer {
+        height: 12.5vh;
+    }
+
+    .landingPageFeatureGraphicsContainer {
+        width: 70%;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-bottom: 18vh;
+    }
+
+    .featureGraphicContainer {
+        width: 25%;
+    }
+
+    .featureGraphicContainer > img {
+        width: 100px;
+    }
+}
+
 .landingPageContainer {
     display: flex;
     flex-direction: column;
@@ -14,48 +118,11 @@
     height: 55vh;
     background-repeat: no-repeat;
     background-size: cover;
-
-    /* background-image: url('./images/collegeLandingPage\ 10.04.28\ PM.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 55vh; */
-}
-
-.landingPageSearchBarBackgroundImage {
-    position: relative;
-    text-align: center;
-    width: 100%;
-    height: 55vh;
-    object-fit: cover;
-    /* color: white; */
-}
-
-.landingPageSearchBarHeader {
-    font-size: 30px;
-    font-weight: 600;
-    top: 35%;
-    color: white;
-    position: absolute;
-}
-
-.landingPageSearchBar {
-  width: 50%;
-  border: 1px solid grey;
-  padding: 15px;
-  height: 20px;
-  border-radius: 10px;
-  outline: none;
-  color: #9DBFAF;
-  font-size: 15px;
-  margin-top: 30px;
-  position: absolute;
 }
 
 .featuredCollegesGreyRowContainer {
     background-color: #ebe1e1;
     width: 100%;
-    height: 12vh;
-    /* opacity: 70%; */
     align-items: center;
 }
 
@@ -77,9 +144,7 @@
 }
 
 .featuredCollegesLogo {
-    width: 6%;
     height: auto;
-    /* height: 40%; */
     object-fit: contain;
 }
 
@@ -98,24 +163,15 @@
 }
 
 .landingPageFeatureGraphicsContainer {
-    margin-bottom: 18vh;
-    border-radius: 20px;
-    width: 70%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
 }
 
 .featureGraphicContainer {
-    width: 25%;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px;
-    /* border: 0.25px solid black; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .featureGraphicContainer > h1 {
@@ -125,56 +181,4 @@
 
 .featureGraphicContainer > p {
     color: #767676;
-}
-
-.featureGraphicContainer > img {
-    width: 100px;
-}
-
-.scrollable_college_bar_landing_page {
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-}
-
-
-.scrollable_college_image {
-    display: flex;
-    width: 100px;
-    /* height: 40px; */
-}
-
-
-.landingPageGraphicsContainer {
-    display: flex;
-    flex-direction: column;
-    /* padding: vertical horizontal */
-    padding: 5% 15%;
-}
-
-.landingPageGraphicContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 70px;
-}
-
-.landingPageGraphicTextContainer{}
-
-.landingPageGraphicTextHeader {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.landingPageGraphicText {
-    font-size: 15px;
-}
-
-
-.landingPageGraphics {
-    display: flex;
-    width: 250px;
-    height: auto;
 }

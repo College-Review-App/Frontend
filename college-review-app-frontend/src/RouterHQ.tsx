@@ -17,7 +17,7 @@ const RouterHQ: React.VFC = () => {
   return (
     <Router>
 
-      <Header/>
+      <Header onClick={() => window.scrollTo(0,0)}/>
 
       <Routes>
        <Route path="/" element={<HomePage/>}/>
@@ -28,7 +28,7 @@ const RouterHQ: React.VFC = () => {
        <Route path="*" element={<Error404/>} />
       </Routes>
 
-      <Footer/>
+      <Footer onClick={() => window.scrollTo(0,0)}/>
 
     </Router>
   )

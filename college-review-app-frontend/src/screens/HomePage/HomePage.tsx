@@ -40,19 +40,9 @@ function HomePage() {
       });
   };
 
-  // useEffect(() => {
-  //   WebFont.load({
-  //     google: {
-  //       families: ['Poppins', 'Hellix'],
-  //     },
-  //   });
-  // }, []);
-
   return (
     <div className='landingPageContainer'>
       <div className="landingPageSearchBarContainer">
-        {/* <img className="landingPageSearchBarBackgroundImage"src={SearchBarBackgroundImage}/> */}
-        {/* <div className="landingPageSearchBarHeader">The #1 Site to See College Data</div> */}
         <CollegeSearchBar />
       </div>
       <div className='featuredCollegesGreyRowContainer'>
