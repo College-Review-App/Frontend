@@ -1,8 +1,13 @@
+// Material UI
 import { FormControlLabel, Modal, Radio, RadioGroup, Autocomplete, TextField } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { useEffect, useState } from "react";
+
+// Add review component CSS
 import "./AddReviewModal.css";
 
+
+// Represents the Form to add a profile / review to a college
 const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) => {
   let raceOptions: string[] = ['Apple', 'Orange', 'Banana'];
 
@@ -39,6 +44,7 @@ const AddReviewModal = ({ refresh, open }: { refresh: boolean, open: boolean }) 
   const [invalidOutcome, setInvalidOutcome] = useState<boolean>(false);
 
 
+  // checks certain user input field requiremnts
   const handleSubmit = () => {
     console.log(GPA);
     if (!GPA || GPA > 4.0 || GPA < 0.0) {

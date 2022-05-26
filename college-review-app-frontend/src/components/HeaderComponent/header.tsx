@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
+
+// Router Imports
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+// CSS import for this header
 import "./header.css";
+
+// Colley Logo Import
 import HeaderLogo from "./colleyLogo.png";
 import { fetchCollegesOnRender, getColleges } from "../../global";
 import { Autocomplete, TextField } from "@mui/material";
@@ -14,6 +20,8 @@ import CollegeSearchBar from "../CollegeSearchBar/CollegeSearchBar";
 
 //use Link for user navigation
 //use navigate to do it yourself (form sumbissions)
+
+// This component represents the header component for the Colley Website
 
 function Header() {
   const navigate = useNavigate();

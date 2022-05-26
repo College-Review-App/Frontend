@@ -2,6 +2,7 @@ import React from 'react';
 import './comingSoon.css';
 import {Link} from "react-router-dom";
 
+// The component for all the pages that are coming soon (filler page)
 function comingSoon() {
   return (
     <div className="comingSoonContainer">

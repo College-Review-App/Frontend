@@ -1,7 +1,15 @@
 import React from 'react';
+
+// Import for the footer css
 import './footer.css';
+
+// Import for the Colley Image in the Footer
 import FooterLogo from './colleyLogo.png';
+
+// Imports the Social Media Icons for React Icons
 import { FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
+
+// Imports the routing things from the React Router
 import { useNavigate, Link } from 'react-router-dom';
 
 function Footer() {

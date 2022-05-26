@@ -39,15 +39,17 @@ function App() {
       });
   };
 
-  return backendConnected ? (
+  return (
+  // backendConnected ? (
     <RouterHQ />
-  ) : (
-    <div className="serverErrorContainer">
-      <img className='serverErrorImage' src={serverError}/>
-      <div className="serverErrorText">
-        Don't panic! Seems like something is broken on our end! We are on it!
-      </div>
-    </div>
+  // ) : (
+    // Component that shows up if our connection to the backend fails!!
+    // <div className="serverErrorContainer">
+    //   <img className='serverErrorImage' src={serverError}/>
+    //   <div className="serverErrorText">
+    //     Don't panic! Seems like something is broken on our end! We are on it!
+    //   </div>
+    // </div>
   );
 }
 

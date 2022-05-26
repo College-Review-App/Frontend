@@ -1,9 +1,15 @@
+// Material UI Components
 import { Autocomplete, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
+
+// Import for React Router
 import { useNavigate } from "react-router-dom";
 import { fetchCollegesOnRender, getColleges } from "../../global";
+
+// Import CSS 
 import './CollegeSearchBar.css';
 
+// Component the represents the college search bar
 const CollegeSearchBar = () => {
   const navigate = useNavigate();
   const [colleges, setColleges] = useState<String[]>([]);

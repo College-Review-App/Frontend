@@ -1,0 +1,51 @@
+.fullProfileModalContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 85%;
+    background-color: white;
+    overflow-x: hidden;
+    padding: 30px 42px 30px 30px;
+    border-radius: 10px;
+}
+
+.fullProfileHeaderModalContainer {
+    width: 101%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fullProfileHeaderModalContainer > p {
+    background-color: lightgreen;
+}
+
+.fullProfileBodyContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.fullProfileLeftColumn {
+    width: 40%;
+    /* border: solid; */
+}
+
+.fullProfileStats {
+}
+
+.fullProfileBackgroundInfo {
+    /* border: 2px solid black; */
+}
+
+.fullProfileRightColumn {
+    width: 60%;
+    /* border: solid; */
+}
+
+.fullProfileDateAddedText {
+    margin-top: 5%;
+    text-align: center;
+}
