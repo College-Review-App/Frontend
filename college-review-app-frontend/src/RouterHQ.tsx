@@ -8,6 +8,7 @@ import Header from './components/HeaderComponent/header';
 import AboutPage from './screens/AboutPage/AboutPage'
 import FAQPage from './screens/FAQPage/FAQPage'
 import BlogPage from './screens/BlogPage/BlogPage'
+import AddCollegePage from './screens/AddCollegePage/AddCollegePage'
 
 //headquarters for all things navigation and routing
 //use links for navigation
@@ -25,6 +26,7 @@ const RouterHQ: React.VFC = () => {
        <Route path="/about" element={<AboutPage/>}/>
        <Route path="/blog" element={<BlogPage/>}/>
        <Route path="/faq" element={<FAQPage/>}/>
+       <Route path="/add-college" element={<AddCollegePage/>}/>
        <Route path="*" element={<Error404/>} />
       </Routes>
 

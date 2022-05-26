@@ -50,9 +50,7 @@ const CollegeSearchBar = () => {
       noOptionsText={
         <p 
           className="addCollegeOption"
-          onClick={() => 
-            console.log("Add New College")
-          }
+          onClick={() => navigate("./add-college")}
         >Add new college</p>
       }
       // sx={{ width: "50%", height: "10" }}
