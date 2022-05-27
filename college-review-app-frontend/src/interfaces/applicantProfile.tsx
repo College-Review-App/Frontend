@@ -1,60 +1,62 @@
-class applicantReview {
-    private reviewId: number;
+class applicantProfile {
+    private profileId: number;
+    // Not returned by profile interface
     private collegeId: number;
-    private reviewDate: Date;
+    private profileDate: Date;
+    // Not returned by profile interface
     private city: String;
     private state: String;
     private country: String;
-    private race: String;
+    private ethnicity: String;
+    private classOf: number;
+    private firstGen: Boolean;
+    private legacyStudent: Boolean;
     private gender: number;
     private familyIncome: number;
-    private highschool: String;
     private GPA: number;
     private SAT: number;
     private ACT: number;
     private intendedMajor: String;
     private extracurriculars: String;
     private advice: String;
-    private likes: number;
     private outcome: number;
-    private isVerified: Boolean;
         
     constructor(applicantReview: Object) {
-        this.reviewId = this.setOrNull(Object(applicantReview)["reviewId"]);
+        this.profileId = this.setOrNull(Object(applicantReview)["profileId"]);
         this.collegeId = this.setOrNull(Object(applicantReview)["collegeId"]);
-        this.reviewDate = this.setOrNull(Object(applicantReview)["reviewDate"]);
+        this.profileDate = this.setOrNull(Object(applicantReview)["profileDate"]);
         this.city = this.setOrNull(Object(applicantReview)["city"]);
         this.state = this.setOrNull(Object(applicantReview)["state"]);
         this.country = this.setOrNull(Object(applicantReview)["country"]);
-        this.race = this.setOrNull(Object(applicantReview)["race"]);
+        this.ethnicity = this.setOrNull(Object(applicantReview)["ethnicity"]);
+        this.classOf = this.setOrNull(Object(applicantReview)["classOf"]);
+        this.firstGen = this.setOrNull(Object(applicantReview)["firstGen"]);
+        this.legacyStudent = this.setOrNull(Object(applicantReview)["legacyStudent"]);
         this.gender = this.setOrNull(Object(applicantReview)["gender"]);
         this.familyIncome = this.setOrNull(Object(applicantReview)["familyIncome"]);
-        this.highschool = this.setOrNull(Object(applicantReview)["highschool"]);
         this.GPA = this.setOrNull(Object(applicantReview)["gpa"]);
         this.SAT = this.setOrNull(Object(applicantReview)["sat"]);
         this.ACT = this.setOrNull(Object(applicantReview)["act"]);
         this.intendedMajor = this.setOrNull(Object(applicantReview)["intendedMajor"]);
         this.extracurriculars = this.setOrNull(Object(applicantReview)["extracurriculars"]);
         this.advice = this.setOrNull(Object(applicantReview)["advice"]);
-        this.likes = this.setOrNull(Object(applicantReview)["likes"]);
         this.outcome = this.setOrNull(Object(applicantReview)["outcome"]);
-        this.isVerified = this.setOrNull(Object(applicantReview)["isVerified"]);
     }
 
     private setOrNull(reviewField: any): any {
         return reviewField == null || reviewField == undefined ? null : reviewField
     }
 
-    public get getReviewId(): number {
-        return this.reviewId;
+    public get getProfileId(): number {
+        return this.profileId;
     }
 
     public get getCollegeId(): number {
         return this.collegeId;
     }
 
-    public get getReviewDate(): Date {
-        return this.reviewDate;
+    public get getProfileDate(): Date {
+        return this.profileDate;
     }
 
     public get getCity(): String {
@@ -69,8 +71,20 @@ class applicantReview {
         return this.country;
     }
 
-    public get getRace(): String {
-        return this.race;
+    public get getEthnicity(): String {
+        return this.ethnicity;
+    }
+
+    public get getClassOf(): number {
+        return this.classOf;
+    }
+
+    public get getFirstGen(): Boolean {
+        return this.firstGen;
+    }
+
+    public get getLegacyStudent(): Boolean {
+        return this.legacyStudent;
     }
 
     public get getGender(): number {
@@ -79,10 +93,6 @@ class applicantReview {
 
     public get getFamilyIncome(): number {
         return this.familyIncome;
-    }
-
-    public get getHighschool(): String {
-        return this.highschool;
     }
 
     public get getGPA(): number {
@@ -109,18 +119,10 @@ class applicantReview {
         return this.advice;
     }
 
-    public get getLikes(): number {
-        return this.likes;
-    }
-
     public get getOutcome(): number {
         return this.outcome;
     }
 
-    public get getIsVerified(): Boolean {
-        return this.isVerified;
-    }
-
 }
 
-export default applicantReview
+export default applicantProfile
