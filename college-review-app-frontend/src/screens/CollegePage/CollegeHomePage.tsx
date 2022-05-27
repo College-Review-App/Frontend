@@ -29,6 +29,7 @@ function CollegeHomePage() {
     getInformationForCollege();
   }, [collegeName]);
 
+  // calculates the average gpa of all applicants of a school
   const calculateGPA = (applicantProfiles : applicantProfile[]): number => {
     let sum = 0;
     for (let i = 0; i < applicantProfiles.length; i++) {
@@ -42,7 +43,7 @@ function CollegeHomePage() {
   const calculateSAT = (applicantProfiles : applicantProfile[]): number => {
     let sum = 0;
     let length = applicantProfiles.length;
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < applicantProfiles.length; i++) {
       let SAT = applicantProfiles[i].getSAT;
       if (SAT === -1) {
         length--;
@@ -58,7 +59,7 @@ function CollegeHomePage() {
   const calculateACT = (applicantProfiles : applicantProfile[]): number => {
     let sum = 0;
     let length = applicantProfiles.length;
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < applicantProfiles.length; i++) {
       let ACT = applicantProfiles[i].getACT;
       if (ACT === -1) {
         length--;
@@ -67,6 +68,7 @@ function CollegeHomePage() {
       }
     }
 
+    //rounds to the nearest whole number
     return Math.ceil(sum / length);
   };
 
@@ -93,7 +95,7 @@ function CollegeHomePage() {
         data[1].forEach((element: Object) => {
           temp.push(new applicantProfile(element));
         });
-        await setApplicants(temp);
+        setApplicants(temp);
         setGPA(calculateGPA(temp));
         setSAT(calculateSAT(temp));
         setACT(calculateACT(temp));
@@ -117,7 +119,7 @@ function CollegeHomePage() {
           <div className="collegeLocation">
             <MdLocationOn
               style={{ marginRight: 5 }}
-              size={20}
+              size={'1em'}
               color={'white'}
             />
             Seattle, WA

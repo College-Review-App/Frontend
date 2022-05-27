@@ -499,7 +499,7 @@ const AddReviewModal = ({
                   style={{ marginTop: '-10px' }}
                   className="addReviewModalInvalidInputWarning"
                 >
-                  Location is required and must be{' '}
+                  Location is required and must be selected from dropdown.
                 </p>
               )}
             </label>
@@ -557,7 +557,7 @@ const AddReviewModal = ({
                 </p>
               )}
             </label>
-            
+
             <label>
               Family Income*
               <RadioGroup

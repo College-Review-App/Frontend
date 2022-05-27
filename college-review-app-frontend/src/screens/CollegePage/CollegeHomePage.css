@@ -137,3 +137,48 @@
     font-size: 20px;
     font-weight: 500;
 }
+
+/* Phone */
+@media screen and (max-width: 600px) {
+    .collegeInfoContainer {
+        height: 30vh;
+        background-size: cover;
+        padding: 10px;
+    }
+
+    .collegeInfoTextContainer {
+        margin: -10px 4%;
+    }
+
+    .collegeName {
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .collegeLocation {
+        color: white;
+        font-size: 12px;
+        /* font-weight: 400; */
+        align-items: center;
+    }
+
+    .reviewStatsLeftContainer {
+       display: none;
+    }
+
+    .applicantReviewsRightContainer {
+        width: 100%;
+    }
+
+    .applicantReviewRightHeaderContainer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 90%;
+        justify-content: space-between;
+        margin-bottom: 10%;
+    }
+    
+
+}
