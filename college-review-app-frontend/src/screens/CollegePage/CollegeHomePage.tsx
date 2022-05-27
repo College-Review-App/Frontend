@@ -21,9 +21,55 @@ function CollegeHomePage() {
   const [refresh, setRefresh] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
+  // state variables for GPA, SAT, and ACT
+  const [GPA, setGPA] = useState<number>(0);
+  const [SAT, setSAT] = useState<number>(0);
+  const [ACT, setACT] = useState<number>(0);
+
   useEffect(() => {
     getInformationForCollege();
   }, [collegeName]);
+
+  const calculateGPA = (applicantProfiles : applicantReview[]): number => {
+    let sum = 0;
+    for (let i = 0; i < applicantProfiles.length; i++) {
+      sum += applicantProfiles[i].getGPA;
+    }
+
+    //rounds GPA to two decimal places
+    return Math.round((sum / applicantProfiles.length) * 100) / 100;
+  };
+
+  const calculateSAT = (applicantProfiles : applicantReview[]): number => {
+    let sum = 0;
+    let length = applicantProfiles.length;
+    for (let i = 0; i < length; i++) {
+      let SAT = applicantProfiles[i].getSAT;
+      if (SAT === -1) {
+        length--;
+      } else {
+        sum += SAT;
+      }
+    }
+
+    //rounds to the nearest 10
+    return Math.ceil(sum / length / 10) * 10;
+  };
+
+  const calculateACT = (applicantProfiles : applicantReview[]): number => {
+    let sum = 0;
+    let length = applicantProfiles.length;
+    for (let i = 0; i < length; i++) {
+      let ACT = applicantProfiles[i].getACT;
+      if (ACT === -1) {
+        length--;
+      } else {
+        sum += ACT;
+      }
+    }
+
+    return Math.ceil(sum / length);
+  };
 
   const getInformationForCollege = () => {
     const requestOptions = {
@@ -37,10 +83,10 @@ function CollegeHomePage() {
         const data = await response.json();
         // Navigates to the 404 error page if the college doesn't exist
         // in the database
-        if (data.message === "Result must not be null!") {
-          navigate('/404error')
+        if (data.message === 'Result must not be null!') {
+          navigate('/404error');
         }
-        console.log(data);
+        // console.log(data);
         // Parses JSON object into college info and applicant
         // review array
         setCollegeInfo(new college(data[0]));
@@ -48,7 +94,10 @@ function CollegeHomePage() {
         data[1].forEach((element: Object) => {
           temp.push(new applicantReview(element));
         });
-        setApplicants(temp);
+        await setApplicants(temp);
+        setGPA(calculateGPA(temp));
+        setSAT(calculateSAT(temp));
+        setACT(calculateACT(temp));
       })
       .catch((error) => {
         console.log('There was an error!', error);
@@ -57,7 +106,11 @@ function CollegeHomePage() {
 
   return (
     <div className="collegePageContainer">
-      <AddReviewModal refresh={refresh} open={modalOpen} collegeName={collegeName!} />
+      <AddReviewModal
+        refresh={refresh}
+        open={modalOpen}
+        collegeName={collegeName!}
+      />
       <div className="collegeInfoContainer">
         <div className="collegeInfoTextContainer">
           {/* should be {collegeInfo.getCollegeName} but my backend isnt running lol */}
@@ -75,15 +128,23 @@ function CollegeHomePage() {
       <div className="reviewInfoContainer">
         <div className="reviewStatsLeftContainer">
           <div className="reviewStatContainer">
-            <div className="reviewStatText">3.72</div>
+            <div className="reviewStatText">{GPA.toString()}</div>
             <div className="reviewStatHeadlineText">Average GPA</div>
           </div>
           <div className="reviewStatContainer">
-            <div className="reviewStatText">1450</div>
+            <div className="reviewStatText">
+              {/* checks if the number is NaN (doesn't exist),
+              if it does return the normal score, if not display 'N/A' to user */}
+              {Number.isNaN(SAT) || SAT === 0 ? 'N/A' : SAT.toString()}
+            </div>
             <div className="reviewStatHeadlineText">Average SAT Scores</div>
           </div>
           <div className="reviewStatContainer">
-            <div className="reviewStatText">32</div>
+            <div className="reviewStatText">
+              {/* checks if the number is NaN (doesn't exist),
+              if it does return the normal score, if not display 'N/A' to user */}
+              {Number.isNaN(ACT) || ACT === 0 ? 'N/A' : ACT.toString()}
+            </div>
             <div className="reviewStatHeadlineText">Average ACT Scores</div>
           </div>
           <div className="reviewStatDataButton">

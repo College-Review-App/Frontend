@@ -7,44 +7,48 @@ import {
   Autocomplete,
   TextField,
   Switch,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { SetStateAction, useEffect, useState } from "react";
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { SetStateAction, useEffect, useState } from 'react';
 // Add review component CSS
-import "./AddReviewModal.css";
-import PlacesAutocomplete from "react-places-autocomplete";
+import './AddReviewModal.css';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 // Represents the Form to add a profile / review to a college
 const AddReviewModal = ({
   refresh,
   open,
-  collegeName
+  collegeName,
 }: {
   refresh: boolean;
   open: boolean;
   collegeName: string;
 }) => {
   let ethnicityOptions: string[] = [
-    "American Indian or Alaskan Native", "Asian", "Hispanic/Latino",
-    "Black or African American", "White", "Native Hawaiian or Other Pacific Islander",
-    "Two or More Races"
+    'American Indian or Alaskan Native',
+    'Asian',
+    'Hispanic/Latino',
+    'Black or African American',
+    'White',
+    'Native Hawaiian or Other Pacific Islander',
+    'Two or More Races',
   ];
   let classOptions: string[] = [
-    "2026",
-    "2025",
-    "2024",
-    "2023",
-    "2022",
-    "2021",
-    "2020",
-    "2019",
-    "2018",
-    "2017",
-    "2016",
-    "2015",
-    "2014",
+    '2026',
+    '2025',
+    '2024',
+    '2023',
+    '2022',
+    '2021',
+    '2020',
+    '2019',
+    '2018',
+    '2017',
+    '2016',
+    '2015',
+    '2014',
   ];
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -69,16 +73,16 @@ const AddReviewModal = ({
     setGender(undefined);
     setFamilyIncome(undefined);
     setOutcome(undefined);
-    setIntendedMajor("");
+    setIntendedMajor('');
     setEthnicity(undefined);
     setClassOf(undefined);
     setFirstGenStudent(false);
     setLegacyStudent(false);
     setGPA(undefined);
-    setLocation("");
-    setLocationText("");
-    setExtracurricularArray([""]);
-    setAdvice("");
+    setLocation('');
+    setLocationText('');
+    setExtracurricularArray(['']);
+    setAdvice('');
     setCanSubmit(true);
   };
 
@@ -91,10 +95,10 @@ const AddReviewModal = ({
   const [canSubmit, setCanSubmit] = useState<boolean>(true);
 
   // state fields for user input form asked to an applicant
-  const [location, setLocation] = useState<string>("");
+  const [location, setLocation] = useState<string>('');
   // This extra location text is for making sure the user can't
   // input their own locations without using the picker
-  const [locationText, setLocationText] = useState<string>("");
+  const [locationText, setLocationText] = useState<string>('');
   const [classOf, setClassOf] = useState<number>();
   const [firstGenStudent, setFirstGenStudent] = useState<boolean>(false);
   const [legacyStudent, setLegacyStudent] = useState<boolean>(false);
@@ -106,11 +110,11 @@ const AddReviewModal = ({
   const [tookSAT, setTookSAT] = useState<boolean>(true);
   const [ACT, setACT] = useState<number>();
   const [tookACT, setTookACT] = useState<boolean>(true);
-  const [intendedMajor, setIntendedMajor] = useState<string>("");
+  const [intendedMajor, setIntendedMajor] = useState<string>('');
   const [extracurricularArray, setExtracurricularArray] = useState<string[]>([
-    "",
+    '',
   ]);
-  const [advice, setAdvice] = useState<string>("");
+  const [advice, setAdvice] = useState<string>('');
   const [outcome, setOutcome] = useState<number>();
 
   // invalid states for user inputs
@@ -124,15 +128,16 @@ const AddReviewModal = ({
   const [invalidOutcome, setInvalidOutcome] = useState<boolean>(false);
   const [invalidGender, setInvalidGender] = useState<boolean>(false);
   const [invalidIncome, setInvalidIncome] = useState<boolean>(false);
-  const [invalidExtracurriculars, setInvalidExtracurriculars] = useState<boolean>(false);
+  const [invalidExtracurriculars, setInvalidExtracurriculars] =
+    useState<boolean>(false);
   const [invalidAdvice, setInvalidAdvice] = useState<boolean>(false);
 
-  const [addProfileSubmissionError, setAddProfileSubmissionError] = useState<boolean>(false);
-
+  const [addProfileSubmissionError, setAddProfileSubmissionError] =
+    useState<boolean>(false);
 
   const handleAddExtracurricular = () => {
     if (extracurricularArray.length < 5) {
-      setExtracurricularArray([...extracurricularArray, ""]);
+      setExtracurricularArray([...extracurricularArray, '']);
     }
   };
 
@@ -155,7 +160,7 @@ const AddReviewModal = ({
   // checks certain user input field requiremnts
   const handleSubmit = () => {
     let validSubmission = true;
-    if (location === "" || location == null || location == undefined) {
+    if (location === '' || location == null || location == undefined) {
       setInvalidLocation(true);
       validSubmission = false;
     }
@@ -184,7 +189,7 @@ const AddReviewModal = ({
       validSubmission = false;
     }
     if (
-      intendedMajor === "" ||
+      intendedMajor === '' ||
       intendedMajor == undefined ||
       intendedMajor == null
     ) {
@@ -226,10 +231,10 @@ const AddReviewModal = ({
     let locationArr = location.split(',');
     locationArr.forEach((text, index) => {
       locationArr[index] = text.trim();
-    })
-    let city: string = "";
-    let state: string = "";
-    let country: string = "";
+    });
+    let city: string = '';
+    let state: string = '';
+    let country: string = '';
     if (locationArr.length === 3) {
       city = locationArr[0];
       state = locationArr[1];
@@ -238,15 +243,18 @@ const AddReviewModal = ({
       city = locationArr[0];
       country = locationArr[1];
     }
-    let extracurricularsText: string = "";
+    let extracurricularsText: string = '';
     extracurricularArray.forEach((ec) => {
-      if (ec != "") {
-        extracurricularsText += ec + "|+=+|"
+      if (ec != '') {
+        extracurricularsText += ec + '|+=+|';
       }
-    })
-    extracurricularsText = extracurricularsText.substring(0, extracurricularsText.length - 5);
+    });
+    extracurricularsText = extracurricularsText.substring(
+      0,
+      extracurricularsText.length - 5
+    );
     addApplicationToDatabase(city, state, country, extracurricularsText);
-  }
+  };
 
   const extracurricularsValid = () => {
     const numExtracurriculars = extracurricularArray.length;
@@ -254,110 +262,75 @@ const AddReviewModal = ({
     let valid = true;
     extracurricularArray.forEach((ec) => {
       if (ec.length > 200) {
-        console.log(ec.length)
-        valid = false
+        console.log(ec.length);
+        valid = false;
       }
-      if (ec === "") {
+      if (ec === '') {
         emptyExtracurriculars++;
       }
-    })
+    });
     if (numExtracurriculars == emptyExtracurriculars) {
-      valid = false
+      valid = false;
     }
-    return valid
-  }
+    return valid;
+  };
 
-    const addApplicationToDatabase = (city: string, state: string, country: string, extracurriculars: string) => {
-      const requestOptions = {
-        method: "POST",
-        body: JSON.stringify({
-          city: city,
-          state: state,
-          country: country,
-          ethnicity: ethnicity,
-          classOf: classOf,
-          firstGen: firstGenStudent,
-          legacyStudent: legacyStudent,
-          gender: gender,
-          familyIncome: familyIncome,
-          GPA: GPA,
-          SAT: tookSAT ? SAT : -1,
-          ACT: tookACT ? ACT : -1,
-          intendedMajor: intendedMajor,
-          extracurriculars: extracurriculars,
-          advice: advice,
-          outcome: outcome,
-        }),
-      };
-      fetch(
-        `http://localhost:8080/add-application-by-college-name?collegeName=${collegeName}`,
-        requestOptions
-      )
-        .then(async (response) => {
-          const data = await response.json();
-          console.log(data);
-          handleClose();
-          setModalOpen(false);
-        })
-        .catch((error) => {
-          console.log("There was an error!", error);
-          setAddProfileSubmissionError(true);
-        });
-      setCanSubmit(true);
+  const addApplicationToDatabase = (
+    city: string,
+    state: string,
+    country: string,
+    extracurriculars: string
+  ) => {
+    const requestOptions = {
+      method: 'POST',
+      body: JSON.stringify({
+        city: city,
+        state: state,
+        country: country,
+        ethnicity: ethnicity,
+        classOf: classOf,
+        firstGen: firstGenStudent,
+        legacyStudent: legacyStudent,
+        gender: gender,
+        familyIncome: familyIncome,
+        GPA: GPA,
+        SAT: tookSAT ? SAT : -1,
+        ACT: tookACT ? ACT : -1,
+        intendedMajor: intendedMajor,
+        extracurriculars: extracurriculars,
+        advice: advice,
+        outcome: outcome,
+      }),
     };
+    fetch(
+      `http://localhost:8080/add-application-by-college-name?collegeName=${collegeName}`,
+      requestOptions
+    )
+      .then(async (response) => {
+        const data = await response.json();
+        console.log(data);
+        handleClose();
+        setModalOpen(false);
+      })
+      .catch((error) => {
+        console.log('There was an error!', error);
+        setAddProfileSubmissionError(true);
+      });
+    setCanSubmit(true);
+  };
 
   return (
     <Modal open={modalOpen} onClose={handleClose}>
       <div className="addReviewModalContainer">
         <div className="addReviewModalHeaderContainer">
-          <CloseIcon style={{cursor: 'pointer'}} onClick={() => handleClose()} fontSize="medium" />
+          <CloseIcon
+            style={{ cursor: 'pointer' }}
+            onClick={() => handleClose()}
+            fontSize="medium"
+          />
         </div>
         <form>
           <div className="addReviewUserFormContainer">
-            <label>
-              Location*
-              <PlacesAutocomplete
-                value={locationText}
-                onChange={setLocationText}
-                onSelect={handleLocationSelect}
-                searchOptions={{ types: ["(cities)"] }}
-              >
-                {({
-                  getInputProps,
-                  suggestions,
-                  getSuggestionItemProps,
-                  loading,
-                }) => (
-                  <div>
-                    <input
-                      {...getInputProps({ className: "addReviewModalLocationPicker" })}
-                    />
-                    <div>
-                      {suggestions.map((suggestion) => {
-                        const style = {
-                          fontWeight: suggestion.active ? "bold" : "400",
-                          cursor: "pointer",
-                          fontSize: suggestion.active ? 13.5 : 13,
-                          fontFamily: "Open Sans",
-                          marginBottom: 15,
-                          marginLeft: 5.5,
-                        };
-                        return (
-                          <div
-                            {...getSuggestionItemProps(suggestion, { style })}
-                          >
-                            {suggestion.description}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </PlacesAutocomplete>
-              {invalidLocation && (
-                <p style={{ marginTop: '-10px'}} className="addReviewModalInvalidInputWarning">Location is required and must be </p>
-              )}
-            </label>
             <label>
               Class of*
               <Autocomplete
@@ -374,46 +347,156 @@ const AddReviewModal = ({
                 )}
               />
               {invalidClass && (
-                <p className="addReviewModalInvalidInputWarning">Class of is required</p>
+                <p className="addReviewModalInvalidInputWarning">
+                  Class of is required
+                </p>
               )}
             </label>
             <label>
+              Intended Major*
+              <input
+                className="addReviewModalTextInput"
+                type="text"
+                name="Intended Major"
+                value={intendedMajor}
+                onChange={(text) => {
+                  setIntendedMajor(text.target.value);
+                  setInvalidMajor(false);
+                }}
+              />
+              {invalidMajor && (
+                <p className="addReviewModalInvalidInputWarning">
+                  Intended major is required
+                </p>
+              )}
+            </label>
+            <label>
+              GPA*
+              <input
+                className="addReviewModalTextInput"
+                onWheelCapture={(e) => {
+                  e.currentTarget.blur();
+                }}
+                type="number"
+                name="GPA"
+                onChange={(number) => {
+                  setGPA(parseFloat(number.target.value));
+                  setInvalidGPA(false);
+                }}
+              />
+              {invalidGPA && (
+                <p className="addReviewModalInvalidInputWarning">
+                  Invalid GPA (4.0 Scale)
+                </p>
+              )}
+            </label>
+            <label>
+              SAT*
+              <input
+                className="addReviewModalTextInput"
+                onWheelCapture={(e) => {
+                  e.currentTarget.blur();
+                }}
+                type="number"
+                name="SAT"
+                disabled={!tookSAT}
+                onChange={(number) => {
+                  setSAT(parseInt(number.target.value));
+                  setInvalidSAT(false);
+                }}
+              />
               <FormControlLabel
                 control={<Switch />}
                 onChange={() => {
-                  setFirstGenStudent(!firstGenStudent);
+                  setTookSAT(!tookSAT);
+                  setInvalidSAT(false);
                 }}
-                label=""
+                label="Did not take the SAT"
               />
-              I am a first generation student
+              {invalidSAT && (
+                <p className="addReviewModalInvalidInputWarning">
+                  Invalid SAT Entry
+                </p>
+              )}
             </label>
             <label>
+              ACT*
+              <input
+                className="addReviewModalTextInput"
+                onWheelCapture={(e) => {
+                  e.currentTarget.blur();
+                }}
+                type="number"
+                name="ACT"
+                disabled={!tookACT}
+                onChange={(number) => {
+                  setACT(parseInt(number.target.value));
+                  setInvalidACT(false);
+                }}
+              />
               <FormControlLabel
                 control={<Switch />}
                 onChange={() => {
-                  setLegacyStudent(!legacyStudent);
+                  setTookACT(!tookACT);
+                  setInvalidACT(false);
                 }}
-                label=""
+                label="Did not take the ACT"
               />
-              I am a legacy student at this college
+              {invalidACT && (
+                <p className="addReviewModalInvalidInputWarning">
+                  Invalid ACT Entry
+                </p>
+              )}
             </label>
             <label>
-              Ethnicity*
-              <Autocomplete
-                options={ethnicityOptions}
-                size="small"
-                onChange={(e) => {
-                  const element = e.target as HTMLInputElement;
-                  const value = element.innerHTML;
-                  setEthnicity(value);
-                  setInvalidEthnicity(false);
-                }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Select" />
+              Location*
+              <PlacesAutocomplete
+                value={locationText}
+                onChange={setLocationText}
+                onSelect={handleLocationSelect}
+                searchOptions={{ types: ['(cities)'] }}
+              >
+                {({
+                  getInputProps,
+                  suggestions,
+                  getSuggestionItemProps,
+                  loading,
+                }) => (
+                  <div>
+                    <input
+                      {...getInputProps({
+                        className: 'addReviewModalLocationPicker',
+                      })}
+                    />
+                    <div>
+                      {suggestions.map((suggestion) => {
+                        const style = {
+                          fontWeight: suggestion.active ? 'bold' : '400',
+                          cursor: 'pointer',
+                          fontSize: suggestion.active ? 13.5 : 13,
+                          fontFamily: 'Open Sans',
+                          marginBottom: 15,
+                          marginLeft: 5.5,
+                        };
+                        return (
+                          <div
+                            {...getSuggestionItemProps(suggestion, { style })}
+                          >
+                            {suggestion.description}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 )}
-              />
-              {invalidEthnicity && (
-                <p className="addReviewModalInvalidInputWarning">Ethnicity is required</p>
+              </PlacesAutocomplete>
+              {invalidLocation && (
+                <p
+                  style={{ marginTop: '-10px' }}
+                  className="addReviewModalInvalidInputWarning"
+                >
+                  Location is required and must be{' '}
+                </p>
               )}
             </label>
             <label>
@@ -444,9 +527,33 @@ const AddReviewModal = ({
                 />
               </RadioGroup>
               {invalidGender && (
-                <p className="addReviewModalInvalidInputWarning">Gender is required</p>
+                <p className="addReviewModalInvalidInputWarning">
+                  Gender is required
+                </p>
               )}
             </label>
+            <label>
+              Ethnicity*
+              <Autocomplete
+                options={ethnicityOptions}
+                size="small"
+                onChange={(e) => {
+                  const element = e.target as HTMLInputElement;
+                  const value = element.innerHTML;
+                  setEthnicity(value);
+                  setInvalidEthnicity(false);
+                }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Select" />
+                )}
+              />
+              {invalidEthnicity && (
+                <p className="addReviewModalInvalidInputWarning">
+                  Ethnicity is required
+                </p>
+              )}
+            </label>
+            
             <label>
               Family Income*
               <RadioGroup
@@ -487,113 +594,45 @@ const AddReviewModal = ({
                 />
               </RadioGroup>
               {invalidIncome && (
-                <p className="addReviewModalInvalidInputWarning">Income is required</p>
-              )}
-            </label>
-            <label>
-              GPA*
-              <input
-                className="addReviewModalTextInput"
-                onWheelCapture={(e) => {
-                  e.currentTarget.blur();
-                }}
-                type="number"
-                name="GPA"
-                onChange={(number) => {
-                  setGPA(parseFloat(number.target.value));
-                  setInvalidGPA(false);
-                }}
-              />
-              {invalidGPA && (
-                <p className="addReviewModalInvalidInputWarning">Invalid GPA (4.0 Scale)</p>
-              )}
-            </label>
-            <label>
-              SAT*
-              <input
-                className="addReviewModalTextInput"
-                onWheelCapture={(e) => {
-                  e.currentTarget.blur();
-                }}
-                type="number"
-                name="SAT"
-                disabled={!tookSAT}
-                onChange={(number) => {
-                  setSAT(parseInt(number.target.value));
-                  setInvalidSAT(false);
-                }}
-              />
-              <FormControlLabel
-                control={<Switch />}
-                onChange={() => {
-                  setTookSAT(!tookSAT);
-                  setInvalidSAT(false);
-                }}
-                label="Did not take the SAT"
-              />
-              {invalidSAT && (
-                <p className="addReviewModalInvalidInputWarning">Invalid SAT Entry</p>
-              )}
-            </label>
-            <label>
-              ACT*
-              <input
-                className="addReviewModalTextInput"
-                onWheelCapture={(e) => {
-                  e.currentTarget.blur();
-                }}
-                type="number"
-                name="ACT"
-                disabled={!tookACT}
-                onChange={(number) => {
-                  setACT(parseInt(number.target.value));
-                  setInvalidACT(false);
-                }}
-              />
-              <FormControlLabel
-                control={<Switch />}
-                onChange={() => {
-                  setTookACT(!tookACT);
-                  setInvalidACT(false);
-                }}
-                label="Did not take the ACT"
-              />
-              {invalidACT && (
-                <p className="addReviewModalInvalidInputWarning">Invalid ACT Entry</p>
-              )}
-            </label>
-            <label>
-              Intended Major*
-              <input
-                className="addReviewModalTextInput"
-                type="text"
-                name="Intended Major"
-                value={intendedMajor}
-                onChange={(text) => {
-                  setIntendedMajor(text.target.value);
-                  setInvalidMajor(false);
-                }}
-              />
-              {invalidMajor && (
                 <p className="addReviewModalInvalidInputWarning">
-                  Intended major is required
+                  Income is required
                 </p>
               )}
+            </label>
+            <label>
+              <FormControlLabel
+                control={<Switch />}
+                onChange={() => {
+                  setFirstGenStudent(!firstGenStudent);
+                }}
+                label=""
+              />
+              I am a first generation student
+            </label>
+            <label>
+              <FormControlLabel
+                control={<Switch />}
+                onChange={() => {
+                  setLegacyStudent(!legacyStudent);
+                }}
+                label=""
+              />
+              I am a legacy student at this college
             </label>
             <label>
               <div className="addReviewModalExtracurricularsHeaderContainer">
                 <p>Extracurriculars*</p>
                 <div className="addReviewModalAddExtracurricularsContainer">
-                  <p style={{ marginRight: "20px" }}>5 Extracurriculars Max</p>
+                  <p style={{ marginRight: '20px' }}>5 Extracurriculars Max</p>
                   <AddIcon
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: 'pointer' }}
                     onClick={() => {
                       handleAddExtracurricular();
                       setInvalidExtracurriculars(false);
                     }}
                   />
                   <RemoveIcon
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: 'pointer' }}
                     onClick={() => {
                       handleDeleteExtracurricular();
                       setInvalidExtracurriculars(false);
@@ -615,7 +654,8 @@ const AddReviewModal = ({
               ))}
               {invalidExtracurriculars && (
                 <p className="addReviewModalInvalidInputWarning">
-                  At least one extracurricular is required, and extracurriculars must be less than 200 characters
+                  At least one extracurricular is required, and extracurriculars
+                  must be less than 200 characters
                 </p>
               )}
             </label>
@@ -662,12 +702,17 @@ const AddReviewModal = ({
                 />
               </RadioGroup>
               {invalidOutcome && (
-                <p className="addReviewModalInvalidInputWarning">Outcome is required</p>
+                <p className="addReviewModalInvalidInputWarning">
+                  Outcome is required
+                </p>
               )}
             </label>
           </div>
         </form>
-        <button className="addReviewModalSubmitButton" onClick={() => canSubmit ? handleSubmit() : null}>
+        <button
+          className="addReviewModalSubmitButton"
+          onClick={() => (canSubmit ? handleSubmit() : null)}
+        >
           Submit
         </button>
         {addProfileSubmissionError && (
