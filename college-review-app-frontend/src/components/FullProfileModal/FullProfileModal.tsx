@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 // CSS Import
 import './FullProfileModal.css';
+import applicantProfile from '../../interfaces/applicantProfile';
 
 // This component represents a a full profile modal that shows the complete
 // statistics, background, extracirriculars, and advice of an anonymous applicant.
@@ -13,10 +14,22 @@ import './FullProfileModal.css';
 const FullProfileModal = ({
   refresh,
   open,
+  profile
 }: {
   refresh: boolean;
   open: boolean;
+  profile: applicantProfile
 }) => {
+  const SAT = profile.getSAT < 0 ? "N/A" : profile.getSAT;
+  const ACT = profile.getACT < 0 ? "N/A" : profile.getACT;
+  const state = profile.getState === "" ? "N/A" : profile.getState;
+  const gender = profile.getGender === 0 ? "Male" : (profile.getGender === 1 ? "Female" : "Other");
+  const firstGen = profile.getFirstGen ? "Yes" : "No";
+  const familyIncome = profile.getFamilyIncome === 1000000 ? "~250k+" : "~" + profile.getFamilyIncome / 1000 + "k";
+  const legacyStudent = profile.getLegacyStudent ? "Yes" : "No";
+  const extracirricularArray = profile.getExtracurriculars.split("|+=+|");
+  const profileDate = new Date(profile.getProfileDate);
+  const dateStringDisplay = profileDate.toLocaleDateString()
 
   // State for closing and opening modal
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -34,7 +47,11 @@ const FullProfileModal = ({
     <Modal open={modalOpen} onClose={handleClose}>
       <div className="fullProfileModalContainer">
         <div className="fullProfileHeaderModalContainer">
-          <p>Accepted : Class of 2025</p>
+          {profile.getOutcome ? 
+            <p className='fullProfileModalAcceptedHeader'>Accepted : Class of {profile.getClassOf}</p>
+            :
+            <p className='fullProfileModalRejectedHeader'>Rejected : Class of {profile.getClassOf}</p>
+          }
           <CloseIcon
             style={{ cursor: 'pointer' }}
             onClick={() => handleClose()}
@@ -46,55 +63,38 @@ const FullProfileModal = ({
           <div className="fullProfileLeftColumn">
             <div className="fullProfileStats">
               <h4>GPA and Test Scores</h4>
-              <p>GPA: 3.73</p>
-              <p>SAT: 1540</p>
-              <p>ACT: N/A</p>
+              <p>GPA: {profile.getGPA}</p>
+              <p>SAT: {SAT}</p>
+              <p>ACT: {ACT}</p>
             </div>
             <div className="fullProfileBackgroundInfo">
               <h4>Background</h4>
-              <p>State: Washington</p>
-              <p>Country: USA</p>
-              <p>Ethnicity: Hispanic</p>
-              <p>Gender: Male</p>
-              <p>First Gen: Yes</p>
-              <p>Family Income: 200k+ </p>
-              <p>Legacy: Yes</p>
+              <p>State: {state}</p>
+              <p>Country: {profile.getCountry}</p>
+              <p>Ethnicity: {profile.getEthnicity}</p>
+              <p>Gender: {gender}</p>
+              <p>First Gen: {firstGen}</p>
+              <p>Family Income: {familyIncome} </p>
+              <p>Legacy: {legacyStudent}</p>
             </div>
           </div>
 
           <div className="fullProfileRightColumn">
             <div className="fullProfileExtraCirriculars">
               <h4>Extracirriculars</h4>
-              <p>1. Honor Society</p>
-              <p>2. President of Future Buisness Leaders of America (FBLA)</p>
-              <p>3. Software Engineering Internship at ChartHop</p>
-              <p>4. Varsity Soccer - Team Captain</p>
-              <p>5. Top Board - Chess Club</p>
+              {extracirricularArray.map((ec) => (
+                <p>{ec}</p>
+              ))}
             </div>
             <div className="fullProfileAdvice">
               <h4>Advice</h4>
               <p>
-                Lorem ipsum dolor sit amet, harum conceptam sed in, te omnis
-                detracto per, eos enim dissentiunt efficiantur ut. Ad nam etiam
-                possim definitionem, novum ignota salutandi vix in. Ne summo.
-
-                Lorem ipsum dolor sit amet, harum conceptam sed in, te omnis
-                detracto per, eos enim dissentiunt efficiantur ut. Ad nam etiam
-                possim definitionem, novum ignota salutandi vix in. Ne summo.
-                
-                Lorem ipsum dolor sit amet, harum conceptam sed in, te omnis
-                detracto per, eos enim dissentiunt efficiantur ut. Ad nam etiam
-                possim definitionem, novum ignota salutandi vix in. Ne summo.
+                {profile.getAdvice}
               </p>
             </div>
           </div>
-          {/* Scores + Gpa */}
-          {/* Background Info */}
-          {/* Extracirriculars */}
-          {/* Advice */}
-          {/* Date Added */}
         </div>
-        <div className="fullProfileDateAddedText">Date Added: March 8th 2022</div>
+        <div className="fullProfileDateAddedText">Date Added: {dateStringDisplay}</div>
       </div>
     </Modal>
   );

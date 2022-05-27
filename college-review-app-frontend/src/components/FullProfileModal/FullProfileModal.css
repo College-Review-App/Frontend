@@ -18,8 +18,12 @@
     justify-content: space-between;
 }
 
-.fullProfileHeaderModalContainer > p {
+.fullProfileModalAcceptedHeader {
     background-color: lightgreen;
+}
+
+.fullProfileModalRejectedHeader {
+    background-color: lightcoral;
 }
 
 .fullProfileBodyContainer {

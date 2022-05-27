@@ -7,11 +7,12 @@ import {
   Autocomplete,
   TextField,
   Switch,
-} from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { SetStateAction, useEffect, useState } from 'react';
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import { SetStateAction, useEffect, useState } from "react";
 // Add review component CSS
 import './AddReviewModal.css';
 import PlacesAutocomplete from 'react-places-autocomplete';
@@ -245,8 +246,8 @@ const AddReviewModal = ({
     }
     let extracurricularsText: string = '';
     extracurricularArray.forEach((ec) => {
-      if (ec != '') {
-        extracurricularsText += ec + '|+=+|';
+      if (ec != "") {
+        extracurricularsText += ec.trim() + "|+=+|"
       }
     });
     extracurricularsText = extracurricularsText.substring(
@@ -330,6 +331,9 @@ const AddReviewModal = ({
           />
         </div>
         <form>
+          <div className="addReviewModalDisclaimerContainer">
+            <p>Note - All profiles are 100% anonymous 😎</p>
+          </div>
           <div className="addReviewUserFormContainer">
             <label>
               Class of*
@@ -578,7 +582,7 @@ const AddReviewModal = ({
                   value="50k - 100k"
                   control={<Radio />}
                   label="50k - 100k"
-                  onChange={() => setFamilyIncome(1000000)}
+                  onChange={() => setFamilyIncome(100000)}
                 />
                 <FormControlLabel
                   value="100k-250k"

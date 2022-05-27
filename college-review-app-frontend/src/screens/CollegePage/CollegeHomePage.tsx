@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './CollegeHomePage.css';
 import Review from '../../components/Review/review';
-import applicantReview from '../../interfaces/applicantReview';
+import applicantProfile from '../../interfaces/applicantProfile';
 import college from '../../interfaces/college';
 import { MdLocationOn } from 'react-icons/md';
 import { BsPencilSquare } from 'react-icons/bs';
 import AddReviewModal from '../../components/AddReviewModal/AddReviewModal';
-import { collegeExists } from '../../global';
 
 function CollegeHomePage() {
   //collegeName field that we pass through the Url to relay information
@@ -15,7 +14,7 @@ function CollegeHomePage() {
   const navigate = useNavigate();
 
   const [collegeInfo, setCollegeInfo] = useState<college>(new college());
-  const [applicants, setApplicants] = useState<applicantReview[]>([]);
+  const [applicants, setApplicants] = useState<applicantProfile[]>([]);
 
   // State variables for the add review modal
   const [refresh, setRefresh] = useState<boolean>(false);
@@ -30,7 +29,7 @@ function CollegeHomePage() {
     getInformationForCollege();
   }, [collegeName]);
 
-  const calculateGPA = (applicantProfiles : applicantReview[]): number => {
+  const calculateGPA = (applicantProfiles : applicantProfile[]): number => {
     let sum = 0;
     for (let i = 0; i < applicantProfiles.length; i++) {
       sum += applicantProfiles[i].getGPA;
@@ -40,7 +39,7 @@ function CollegeHomePage() {
     return Math.round((sum / applicantProfiles.length) * 100) / 100;
   };
 
-  const calculateSAT = (applicantProfiles : applicantReview[]): number => {
+  const calculateSAT = (applicantProfiles : applicantProfile[]): number => {
     let sum = 0;
     let length = applicantProfiles.length;
     for (let i = 0; i < length; i++) {
@@ -56,7 +55,7 @@ function CollegeHomePage() {
     return Math.ceil(sum / length / 10) * 10;
   };
 
-  const calculateACT = (applicantProfiles : applicantReview[]): number => {
+  const calculateACT = (applicantProfiles : applicantProfile[]): number => {
     let sum = 0;
     let length = applicantProfiles.length;
     for (let i = 0; i < length; i++) {
@@ -90,9 +89,9 @@ function CollegeHomePage() {
         // Parses JSON object into college info and applicant
         // review array
         setCollegeInfo(new college(data[0]));
-        let temp: applicantReview[] = [];
+        let temp: applicantProfile[] = [];
         data[1].forEach((element: Object) => {
-          temp.push(new applicantReview(element));
+          temp.push(new applicantProfile(element));
         });
         await setApplicants(temp);
         setGPA(calculateGPA(temp));
@@ -114,7 +113,7 @@ function CollegeHomePage() {
       <div className="collegeInfoContainer">
         <div className="collegeInfoTextContainer">
           {/* should be {collegeInfo.getCollegeName} but my backend isnt running lol */}
-          <h1 className="collegeName">University of Washington</h1>
+          <h1 className="collegeName">{collegeInfo.getCollegeName}</h1>
           <div className="collegeLocation">
             <MdLocationOn
               style={{ marginRight: 5 }}
@@ -175,9 +174,9 @@ function CollegeHomePage() {
               <BsPencilSquare color="white" fontWeight={'bold'} />
             </button>
           </div>
-          <Review />
-          <Review />
-          <Review />
+          {applicants.map((profile) => (
+            <Review key={profile.getProfileId} profile={profile} />
+          ))}
         </div>
       </div>
     </div>
