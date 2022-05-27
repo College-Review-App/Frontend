@@ -2,6 +2,21 @@
     .footerContainer {
         padding: 5% 12%;
     }
+
+    .footerLinksColumnContainer {
+        height: 65vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column !important;
+        justify-items: center !important;
+        align-items: center !important;        
+    }
+
+    .footerColumnContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 600px) {

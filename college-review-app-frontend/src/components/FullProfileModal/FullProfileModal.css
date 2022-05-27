@@ -49,3 +49,25 @@
     margin-top: 5%;
     text-align: center;
 }
+
+/* Phone */
+@media screen and (max-width: 600px) {
+
+    .fullProfileBodyContainer {
+        flex-direction: column;
+    }
+
+    .fullProfileLeftColumn {
+        width: 100%;
+        /* text-align: center; */
+        /* border: solid; */
+    }
+
+    .fullProfileRightColumn {
+        width: 100%;
+        /* text-align: center; */
+        /* border: solid; */
+    }
+  
+  
+}
