@@ -129,7 +129,7 @@ function CollegeHomePage() {
       <div className="reviewInfoContainer">
         <div className="reviewStatsLeftContainer">
           <div className="reviewStatContainer">
-            <div className="reviewStatText">{GPA.toString()}</div>
+            <div className="reviewStatText">{Number.isNaN(GPA) || GPA === 0 ? 'N/A' : GPA.toString()}</div>
             <div className="reviewStatHeadlineText">Average GPA</div>
           </div>
           <div className="reviewStatContainer">
