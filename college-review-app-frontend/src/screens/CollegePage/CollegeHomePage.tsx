@@ -122,7 +122,7 @@ function CollegeHomePage() {
               size={'1em'}
               color={'white'}
             />
-            Seattle, WA
+            {collegeInfo.getLocation}
           </div>
         </div>
       </div>
@@ -170,7 +170,7 @@ function CollegeHomePage() {
                 setModalOpen(true);
               }}
             >
-              <div style={{ color: 'white', fontWeight: '500' }}>
+              <div style={{ color: 'white', fontWeight: '500', marginBottom: '5%' }}>
                 Add your Profile{' '}
               </div>
               <BsPencilSquare color="white" fontWeight={'bold'} />

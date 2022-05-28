@@ -621,7 +621,7 @@ const AddReviewModal = ({
                 }}
                 label=""
               />
-              I am a legacy student at this college
+              I am a legacy student 
             </label>
             <label>
               <div className="addReviewModalExtracurricularsHeaderContainer">

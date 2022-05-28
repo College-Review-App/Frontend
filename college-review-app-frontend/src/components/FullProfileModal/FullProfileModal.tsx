@@ -14,22 +14,30 @@ import applicantProfile from '../../interfaces/applicantProfile';
 const FullProfileModal = ({
   refresh,
   open,
-  profile
+  profile,
 }: {
   refresh: boolean;
   open: boolean;
-  profile: applicantProfile
+  profile: applicantProfile;
 }) => {
-  const SAT = profile.getSAT < 0 ? "N/A" : profile.getSAT;
-  const ACT = profile.getACT < 0 ? "N/A" : profile.getACT;
-  const state = profile.getState === "" ? "N/A" : profile.getState;
-  const gender = profile.getGender === 0 ? "Male" : (profile.getGender === 1 ? "Female" : "Other");
-  const firstGen = profile.getFirstGen ? "Yes" : "No";
-  const familyIncome = profile.getFamilyIncome === 1000000 ? "~250k+" : "~" + profile.getFamilyIncome / 1000 + "k";
-  const legacyStudent = profile.getLegacyStudent ? "Yes" : "No";
-  const extracirricularArray = profile.getExtracurriculars.split("|+=+|");
+  const SAT = profile.getSAT < 0 ? 'N/A' : profile.getSAT;
+  const ACT = profile.getACT < 0 ? 'N/A' : profile.getACT;
+  const state = profile.getState === '' ? 'N/A' : profile.getState;
+  const gender =
+    profile.getGender === 0
+      ? 'Male'
+      : profile.getGender === 1
+      ? 'Female'
+      : 'Other';
+  const firstGen = profile.getFirstGen ? 'Yes' : 'No';
+  const familyIncome =
+    profile.getFamilyIncome === 1000000
+      ? '~250k+'
+      : '~' + profile.getFamilyIncome / 1000 + 'k';
+  const legacyStudent = profile.getLegacyStudent ? 'Yes' : 'No';
+  const extracirricularArray = profile.getExtracurriculars.split('|+=+|');
   const profileDate = new Date(profile.getProfileDate);
-  const dateStringDisplay = profileDate.toLocaleDateString()
+  const dateStringDisplay = profileDate.toLocaleDateString();
 
   // State for closing and opening modal
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -38,7 +46,7 @@ const FullProfileModal = ({
     setModalOpen(open);
   }, [refresh]);
 
-  // Handles closing the modal   
+  // Handles closing the modal
   const handleClose = () => {
     setModalOpen(false);
   };
@@ -47,11 +55,15 @@ const FullProfileModal = ({
     <Modal open={modalOpen} onClose={handleClose}>
       <div className="fullProfileModalContainer">
         <div className="fullProfileHeaderModalContainer">
-          {profile.getOutcome ? 
-            <p className='fullProfileModalAcceptedHeader'>Accepted : Class of {profile.getClassOf}</p>
-            :
-            <p className='fullProfileModalRejectedHeader'>Rejected : Class of {profile.getClassOf}</p>
-          }
+          {profile.getOutcome ? (
+            <p className="fullProfileModalAcceptedHeader">
+              Accepted : Class of {profile.getClassOf}
+            </p>
+          ) : (
+            <p className="fullProfileModalRejectedHeader">
+              Rejected : Class of {profile.getClassOf}
+            </p>
+          )}
           <CloseIcon
             style={{ cursor: 'pointer' }}
             onClick={() => handleClose()}
@@ -88,13 +100,13 @@ const FullProfileModal = ({
             </div>
             <div className="fullProfileAdvice">
               <h4>Advice</h4>
-              <p>
-                {profile.getAdvice}
-              </p>
+              <p>{profile.getAdvice}</p>
             </div>
           </div>
         </div>
-        <div className="fullProfileDateAddedText">Date Added: {dateStringDisplay}</div>
+        <div className="fullProfileDateAddedText">
+          Date Added: {dateStringDisplay}
+        </div>
       </div>
     </Modal>
   );
