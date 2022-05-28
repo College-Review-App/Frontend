@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-//CSS styles import 
-import './review.css';
+//CSS styles import
+import "./review.css";
 
 //Applicant Review Interface
-import applicantProfile from '../../interfaces/applicantProfile';
+import applicantProfile from "../../interfaces/applicantProfile";
 
 // Modal Import
-import FullProfileModal from '../FullProfileModal/FullProfileModal';
-
+import FullProfileModal from "../FullProfileModal/FullProfileModal";
 
 // const Review = (props: { review: applicantReview }) => {
 //   const review = props.review;
 //   let intendedMajor = review.getIntendedMajor;
 //   let GPA = review.getGPA;
 //   let outcome = review.getOutcome == 1 ? "Accepted" : "Rejected";
-
 
 // This component represents a Application Review / Profile.
 
@@ -31,16 +29,15 @@ const Review = ({ profile }: { profile: applicantProfile }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
-    <div className="reviewContainer" >
+    <div className="reviewContainer">
       <FullProfileModal refresh={refresh} open={modalOpen} profile={profile} />
-      <div className="reviewItemsContainer">
+      <div>
         <div className="reviewContainerTopRow">
-          {
-            profile.getOutcome === 1 ? 
-              <div className="decisionContainer"> Accepted ✅</div>
-              :
-              <div className="decisionContainer"> Rejected ❌</div>
-          }
+          {profile.getOutcome === 1 ? (
+            <div className="decisionContainer"> Accepted ✅</div>
+          ) : (
+            <div className="decisionContainer"> Rejected ❌</div>
+          )}
           <div className="classContainer">Class of {profile.getClassOf}</div>
         </div>
         <div className="statisticsAdviceContainer">
@@ -53,21 +50,20 @@ const Review = ({ profile }: { profile: applicantProfile }) => {
           </div>
           <div className="reviewItemAdviceContainer">
             <div className="reviewStatItem">Advice:</div>
-            <div className="reviewStatItem">
-              {profile.getAdvice}
-            </div>
+            <div className="reviewStatItem">{profile.getAdvice}</div>
           </div>
         </div>
-        <div className="fullProfileButtonContainer">
-          <button
-            onClick={() => {
-              setRefresh(!refresh);
-              setModalOpen(true);
-            }}
-          >
-            Click to view full profile!
-          </button>
-        </div>
+      </div>
+
+      <div className="fullProfileButtonContainer">
+        <button
+          onClick={() => {
+            setRefresh(!refresh);
+            setModalOpen(true);
+          }}
+        >
+          Click to view full profile!
+        </button>
       </div>
 
       {/* Advice */}

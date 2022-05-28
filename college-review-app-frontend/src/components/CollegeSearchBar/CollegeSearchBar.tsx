@@ -3,7 +3,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 
 // Import for React Router
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { fetchCollegesOnRender, getColleges } from "../../global";
 
 // Import CSS 
@@ -11,6 +11,7 @@ import './CollegeSearchBar.css';
 
 // Component the represents the college search bar
 const CollegeSearchBar = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const [colleges, setColleges] = useState<String[]>([]);
 
@@ -55,7 +56,7 @@ const CollegeSearchBar = () => {
       }
       // sx={{ width: "50%", height: "10" }}
       renderInput={(params) => (
-        <TextField {...params} label="Search for a college" />
+        <TextField {...params} label="Search for a college" variant={location.pathname === '/' ? "filled" : "outlined"} />
       )}
     />
   );

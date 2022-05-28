@@ -8,7 +8,7 @@
     }
 
     .landingPageFeatureGraphicsContainer {
-        width: 70%;
+        width: 90%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -16,7 +16,7 @@
     }
 
     .featureGraphicContainer {
-        width: 70%;
+        width: 85%;
         margin-bottom: 10vh;
     }
 
@@ -43,7 +43,7 @@
     }
 
     .featureGraphicContainer {
-        width: 65%;
+        width: 72%;
         margin-bottom: 8vh;
     }
 
@@ -69,7 +69,7 @@
     }
 
     .featureGraphicContainer {
-        width: 25%;
+        width: 30%;
     }
 
     .featureGraphicContainer > img {
@@ -87,14 +87,14 @@
     }
 
     .landingPageFeatureGraphicsContainer {
-        width: 70%;
+        width: 80%;
         flex-direction: row;
         justify-content: space-evenly;
         margin-bottom: 18vh;
     }
 
     .featureGraphicContainer {
-        width: 25%;
+        width: 26%;
     }
 
     .featureGraphicContainer > img {
@@ -160,6 +160,7 @@
 .landingPageFeatureGraphicsHeadline > h1 {
     font-size: 25px;
     font-weight: 600;
+    margin: 18px 0px;
 }
 
 .landingPageFeatureGraphicsContainer {
@@ -171,12 +172,13 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 .featureGraphicContainer > h1 {
     font-size: 24px;
     font-weight: 600;
+    margin: 18px;
 }
 
 .featureGraphicContainer > p {

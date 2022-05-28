@@ -192,7 +192,7 @@ const AddReviewModal = ({
     if (
       intendedMajor === '' ||
       intendedMajor == undefined ||
-      intendedMajor == null
+      intendedMajor == null || intendedMajor.length > 40
     ) {
       setInvalidMajor(true);
       validSubmission = false;
@@ -370,7 +370,7 @@ const AddReviewModal = ({
               />
               {invalidMajor && (
                 <p className="addReviewModalInvalidInputWarning">
-                  Intended major is required
+                  Intended major is required and must be less than 40 characters
                 </p>
               )}
             </label>
@@ -606,7 +606,13 @@ const AddReviewModal = ({
             <label>
               <FormControlLabel
                 control={<Switch />}
+                checked={firstGenStudent}
                 onChange={() => {
+                  if (!firstGenStudent) {
+                    if (legacyStudent) {
+                      setLegacyStudent(false)
+                    }
+                  }
                   setFirstGenStudent(!firstGenStudent);
                 }}
                 label=""
@@ -616,7 +622,13 @@ const AddReviewModal = ({
             <label>
               <FormControlLabel
                 control={<Switch />}
+                checked={legacyStudent}
                 onChange={() => {
+                  if (!legacyStudent) {
+                    if (firstGenStudent) {
+                      setFirstGenStudent(false)
+                    }
+                  }
                   setLegacyStudent(!legacyStudent);
                 }}
                 label=""

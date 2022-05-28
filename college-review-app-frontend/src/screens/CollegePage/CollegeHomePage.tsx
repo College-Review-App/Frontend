@@ -128,25 +128,27 @@ function CollegeHomePage() {
       </div>
       <div className="reviewInfoContainer">
         <div className="reviewStatsLeftContainer">
-          <div className="reviewStatContainer">
-            <div className="reviewStatText">{Number.isNaN(GPA) || GPA === 0 ? 'N/A' : GPA.toString()}</div>
-            <div className="reviewStatHeadlineText">Average GPA</div>
-          </div>
-          <div className="reviewStatContainer">
-            <div className="reviewStatText">
-              {/* checks if the number is NaN (doesn't exist),
-              if it does return the normal score, if not display 'N/A' to user */}
-              {Number.isNaN(SAT) || SAT === 0 ? 'N/A' : SAT.toString()}
+          <div className='reviewStatsNumberContainer'>
+            <div className="reviewStatContainer">
+              <div className="reviewStatText">{Number.isNaN(GPA) || GPA === 0 ? 'N/A' : GPA.toString()}</div>
+              <div className="reviewStatHeadlineText">Average GPA</div>
             </div>
-            <div className="reviewStatHeadlineText">Average SAT Scores</div>
-          </div>
-          <div className="reviewStatContainer">
-            <div className="reviewStatText">
-              {/* checks if the number is NaN (doesn't exist),
-              if it does return the normal score, if not display 'N/A' to user */}
-              {Number.isNaN(ACT) || ACT === 0 ? 'N/A' : ACT.toString()}
+            <div className="reviewStatContainer">
+              <div className="reviewStatText">
+                {/* checks if the number is NaN (doesn't exist),
+                if it does return the normal score, if not display 'N/A' to user */}
+                {Number.isNaN(SAT) || SAT === 0 ? 'N/A' : SAT.toString()}
+              </div>
+              <div className="reviewStatHeadlineText">Average SAT Scores</div>
             </div>
-            <div className="reviewStatHeadlineText">Average ACT Scores</div>
+            <div className="reviewStatContainer">
+              <div className="reviewStatText">
+                {/* checks if the number is NaN (doesn't exist),
+                if it does return the normal score, if not display 'N/A' to user */}
+                {Number.isNaN(ACT) || ACT === 0 ? 'N/A' : ACT.toString()}
+              </div>
+              <div className="reviewStatHeadlineText">Average ACT Scores</div>
+            </div>
           </div>
           <div className="reviewStatDataButton">
             <button className="reviewStatDataButtonText">
@@ -155,12 +157,6 @@ function CollegeHomePage() {
           </div>
         </div>
         <div className="applicantReviewsRightContainer">
-          {/* {applicants.map((applicantReview) => (
-            <Review
-              review={applicantReview}
-              key={applicantReview.getReviewId}
-            />
-          ))} */}
           <div className="applicantReviewRightHeaderContainer">
             <div className="allReviewsText">All Profiles</div>
             <button
@@ -170,15 +166,21 @@ function CollegeHomePage() {
                 setModalOpen(true);
               }}
             >
-              <div style={{ color: 'white', fontWeight: '500', marginBottom: '5%' }}>
-                Add your Profile{' '}
-              </div>
+              Add your Profile{' '}
               <BsPencilSquare color="white" fontWeight={'bold'} />
             </button>
           </div>
-          {applicants.map((profile) => (
-            <Review key={profile.getProfileId} profile={profile} />
-          ))}
+          {applicants.length > 0 ?
+            applicants.map((profile) => (
+              <Review key={profile.getProfileId} profile={profile} />
+            ))
+            :
+            <p className='noApplicantProfilesMessage'>
+              Profiles for {collegeName} are coming soon! In the meantime,
+              feel free to add your own college application experience 😀.
+            </p>
+          } 
+          
         </div>
       </div>
     </div>

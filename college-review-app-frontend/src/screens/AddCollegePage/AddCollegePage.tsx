@@ -49,10 +49,14 @@ const AddCollegePage = () => {
   return (
     <div className="addCollegeContainer">
       {thanks ? (
-        <p className="thanksText">
-          Thanks for your submission! <br />
-          <span className='thanksTextSubHeadline'>We look forward to adding your college soon!</span>
-        </p>
+        <div className='collegeSubmissionThanksContainer'>
+          <p className="thanksText">
+            Thanks for your submission! 
+            <br />
+            <span className='thanksTextSubHeadline'>We look forward to adding your college soon!</span>
+          </p>
+        </div>
+        
       ) : (
         <p>Add a College</p>
       )}

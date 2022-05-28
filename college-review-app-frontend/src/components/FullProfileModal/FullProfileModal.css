@@ -1,22 +1,3 @@
-/* Phone */
-@media screen and (max-width: 800px) {
-    .fullProfileBodyContainer {
-        flex-direction: column;
-    }
-
-    .fullProfileLeftColumn {
-        width: 100%;
-    }
-
-    .fullProfileRightColumn {
-        width: 100%;
-    }
-
-    .fullProfileExtraCirriculars > h4 {
-        margin-top: 5vh;
-    }
-}
-
 .fullProfileModalContainer {
     position: absolute;
     top: 50%;
@@ -119,5 +100,24 @@
 .fullProfileDateAddedText {
     margin-top: 5vh;
     text-align: center;
+}
+
+/* Phone */
+@media screen and (max-width: 800px) {
+    .fullProfileBodyContainer {
+        flex-direction: column;
+    }
+
+    .fullProfileLeftColumn {
+        width: 100%;
+    }
+
+    .fullProfileRightColumn {
+        width: 100%;
+    }
+
+    .fullProfileExtraCirriculars > h4 {
+        margin-top: 5vh;
+    }
 }
 

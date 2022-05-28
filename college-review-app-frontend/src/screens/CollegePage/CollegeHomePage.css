@@ -1,3 +1,276 @@
+/* Phone */
+@media screen and (max-width: 600px) {
+    .collegeInfoContainer {
+        height: 30vh;
+        background-size: cover;
+        padding: 10px;
+    }
+
+    .collegeInfoTextContainer {
+        margin: -10px 4%;
+        flex-direction: column;
+    }
+
+    .collegeName {
+        font-size: 22px;
+    }
+    
+    .collegeLocation {
+        font-size: 14px;
+    }
+
+    .reviewStatsLeftContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 8%;
+    }
+
+    .reviewStatsNumberContainer {
+        width: 100%;
+        padding: 0% 5%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .reviewStatContainer {
+        width: 30%;
+        padding: 0% 1%;
+        border-radius: 12px;
+        height: 120px;
+        margin-bottom: 3.5%;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .reviewStatText {
+        font-size: 30px;
+    }
+
+    .reviewStatHeadlineText {
+        font-size: 18px;
+    }
+
+    .reviewStatDataButton {
+        width: 40%;
+        height: 40px;
+    }
+
+    .applicantReviewsRightContainer {
+        margin-top: 8vh;
+        margin-bottom: 5vh;
+    }
+    
+    .applicantReviewRightHeaderContainer {
+        width: 90%;
+        margin-bottom: 3.5vh;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 600px) {
+    .reviewInfoContainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 6%;
+    }
+
+    .collegeInfoTextContainer {
+        margin: -10px 4%;
+        flex-direction: column;
+    }
+
+    .collegeName {
+        font-size: 26px;
+    }
+    
+    .collegeLocation {
+        font-size: 16px;
+    }
+
+    .reviewStatsLeftContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .reviewStatsNumberContainer {
+        width: 100%;
+        padding: 0% 5%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .reviewStatContainer {
+        width: 30%;
+        padding: 0% 1%;
+        border-radius: 12px;
+        height: 120px;
+        margin-bottom: 3.5%;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .reviewStatText {
+        font-size: 30px;
+    }
+
+    .reviewStatHeadlineText {
+        font-size: 18px;
+    }
+
+    .reviewStatDataButton {
+        width: 40%;
+        height: 45px;
+    }
+
+    .applicantReviewsRightContainer {
+        margin-top: 8vh;
+    }
+
+    .applicantReviewRightHeaderContainer {
+        width: 90%;
+        margin-bottom: 4vh;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 900px) {
+    .reviewInfoContainer {
+        display: flex;
+        flex-direction: row;
+        margin-top: 2%;
+    }
+
+    .collegeInfoTextContainer {
+        margin: -10px 4%;
+        flex-direction: row;
+    }
+
+    .collegeName {
+        font-size: 30px;
+    }
+    
+    .collegeLocation {
+        font-size: 20px;
+    }
+
+    .reviewStatsLeftContainer {
+        display: flex;
+        flex-direction: column;
+        width: 27%;
+        margin-top: 2%;
+        margin-left: 1%;
+    }
+
+    .reviewStatsNumberContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reviewStatContainer {
+        width: 80%;
+        border-radius: 12px;
+        height: 150px;
+        margin-bottom: 7%;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .reviewStatText {
+        font-size: 36px;
+    }
+
+    .reviewStatHeadlineText {
+        font-size: 20px;
+    }
+
+    .reviewStatDataButton {
+        width: 70%;
+        height: 50px;
+    }
+
+    .applicantReviewsRightContainer {
+        width: 81%;
+    }
+
+    .applicantReviewRightHeaderContainer {
+        width: 83%;
+        margin-bottom: 2.5vh;
+    }
+}
+  
+@media screen and (min-width: 1200px) {
+    .reviewInfoContainer {
+        display: flex;
+        flex-direction: row;
+        margin-top: 2%;
+    }
+
+    .collegeInfoTextContainer {
+        flex-direction: row;
+        margin: -10px 4%;
+    }
+
+    .collegeName {
+        font-size: 34px;
+    }
+    
+    .collegeLocation {
+        font-size: 20px;
+    }
+
+    .reviewStatsLeftContainer {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        margin-top: 2%;
+    }
+
+    .reviewStatsNumberContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reviewStatContainer {
+        width: 80%;
+        border-radius: 12px;
+        height: 150px;
+        margin-bottom: 5%;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .reviewStatText {
+        font-size: 40px;
+    }
+
+    .reviewStatHeadlineText {
+        font-size: 20px;
+    }
+
+    .reviewStatDataButton {
+        width: 60%;
+        height: 50px;
+    }
+
+    .applicantReviewsRightContainer {
+        width: 74%;
+        padding: 15px 5px;
+    }
+
+    .applicantReviewRightHeaderContainer {
+        width: 80%;
+        margin-bottom: 2.5vh;
+    }
+}
+
 .collegePageContainer {
     display: flex;
     flex-direction: column;
@@ -19,22 +292,17 @@
 
 .collegeInfoTextContainer {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: -25px 4%;
 }
 
 .collegeName {
     color: white;
-    font-size: 45px;
     font-weight: 500;
 }
 
 .collegeLocation {
     color: white;
-    font-size: 25px;
-    /* font-weight: 400; */
     align-items: center;
 }
 
@@ -51,31 +319,19 @@
     0 6px 20px 0 rgba(161, 155, 155, 0.59);
     border: none;
     cursor: pointer;
-}
-
-.reviewInfoContainer {
-    display: flex;
-    flex-direction: row;
-    margin-top: 2%;
-
+    color: white;
 }
 
 .reviewStatsLeftContainer {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin-top: 2%;
     align-items: center;
 }
 
-.reviewStatContainer{
+.reviewStatContainer {
     display: flex;
     flex-direction: column;
     background-color: rgb(30, 136, 229);
-    width: 80%;
     border-radius: 12px;
-    height: 150px;
-    margin-bottom: 5%;
+    text-align: center;
     box-shadow: 0 4px 8px 0 rgba(66, 65, 65, 0.203),
     0 6px 20px 0 rgba(161, 155, 155, 0.59);
     align-items: center;
@@ -84,13 +340,11 @@
 
 .reviewStatText {
     font-weight: 500;
-    font-size: 40px;
     color: white;
 }
 
 .reviewStatHeadlineText {
     font-weight: 500;
-    font-size: 20px;
     color: rgb(144, 202, 249);
 }
 
@@ -98,9 +352,7 @@
     display: flex;
     flex-direction: column;
     background-color: rgb(30, 136, 229);
-    width: 60%;
     border-radius: 12px;
-    height: 50px;
     box-shadow: 0 4px 8px 0 rgba(66, 65, 65, 0.203),
     0 6px 20px 0 rgba(161, 155, 155, 0.59);
     align-items: center;
@@ -120,17 +372,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70%;
-    padding: 15px;
 }
 
 .applicantReviewRightHeaderContainer{
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 80%;
     justify-content: space-between;
-    margin-bottom: 2%;
 }
 
 .allReviewsText {
@@ -138,47 +386,7 @@
     font-weight: 500;
 }
 
-/* Phone */
-@media screen and (max-width: 600px) {
-    .collegeInfoContainer {
-        height: 30vh;
-        background-size: cover;
-        padding: 10px;
-    }
-
-    .collegeInfoTextContainer {
-        margin: -10px 4%;
-    }
-
-    .collegeName {
-        color: white;
-        font-size: 18px;
-        font-weight: 500;
-    }
-    
-    .collegeLocation {
-        color: white;
-        font-size: 12px;
-        /* font-weight: 400; */
-        align-items: center;
-    }
-
-    .reviewStatsLeftContainer {
-       display: none;
-    }
-
-    .applicantReviewsRightContainer {
-        width: 100%;
-    }
-
-    .applicantReviewRightHeaderContainer{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        width: 90%;
-        justify-content: space-between;
-        margin-bottom: 10%;
-    }
-    
-
+.noApplicantProfilesMessage {
+    font-size: 22px;
+    margin: 5vh 15vw;
 }

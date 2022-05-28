@@ -4,7 +4,6 @@
     }
 
     .footerLinksColumnContainer {
-        height: 65vh;
         width: 100%;
         display: flex;
         flex-direction: column !important;
@@ -16,6 +15,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
     }
 }
 
@@ -46,6 +47,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .footerSocialMediaContainer {
@@ -62,10 +64,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-}
-
-.footerColumnHeader {
-    color: #FCFBFA;
+    margin-top: 30px;
 }
 
 .footerColumnContainer {
@@ -73,7 +72,14 @@
     flex-direction: column;
 }
 
+.footerColumnHeader {
+    color: #FCFBFA;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
 .bottomLinksText {
     text-decoration: none;
     color: #FCFBFA;
+    margin-top: 2px;
 }
