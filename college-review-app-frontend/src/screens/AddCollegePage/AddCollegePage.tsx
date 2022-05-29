@@ -1,6 +1,6 @@
 // CSS
 import './AddCollegePage.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const AddCollegePage = () => {
   //state fields
@@ -9,12 +9,48 @@ const AddCollegePage = () => {
   const [thanks, setThanks] = useState<boolean>(false);
 
   const addNewCollege = () => {
-    const addNewCollegeText = addCollegeText.toUpperCase();
+    console.log(addCollegeText);
     const requestOptions = {
       method: 'POST',
+      body: JSON.stringify({ collegeName: addCollegeText }),
+    };
+    fetch('http://localhost:8080/add-new-college?collegeName', requestOptions)
+      .then(async (response) => {
+        const data = await response.json();
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log('There was an error!', error);
+      });
+  };
+
+  const getAllRequestedColleges = () => {
+    const requestOptions = {
+      method: 'GET',
+    };
+    fetch('http://localhost:8080/get-all-requested-colleges', requestOptions)
+      .then(async (response) => {
+        const data = await response.json();
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log('There was an error!', error);
+      });
+  };
+
+  const addRequestedCollegetoCollegeDB = () => {
+    const requestOptions = {
+      method: 'POST',
+      body: JSON.stringify({
+        collegeName: 'FLorida State University',
+        location: 'Tallahassee,FL',
+        image: '',
+        acceptanceRate: 32,
+        ranking: 55,
+      }),
     };
     fetch(
-      `http://localhost:8080/add-new-college?collegeName=${addNewCollegeText}`,
+      `http://localhost:8080/add-requested-college-to-college-db`,
       requestOptions
     )
       .then(async (response) => {
@@ -46,17 +82,23 @@ const AddCollegePage = () => {
     }
   };
 
+  useEffect(() => {
+    getAllRequestedColleges();
+    addRequestedCollegetoCollegeDB();
+  }, []);
+
   return (
     <div className="addCollegeContainer">
       {thanks ? (
-        <div className='collegeSubmissionThanksContainer'>
+        <div className="collegeSubmissionThanksContainer">
           <p className="thanksText">
-            Thanks for your submission! 
+            Thanks for your submission!
             <br />
-            <span className='thanksTextSubHeadline'>We look forward to adding your college soon!</span>
+            <span className="thanksTextSubHeadline">
+              We look forward to adding your college soon!
+            </span>
           </p>
         </div>
-        
       ) : (
         <p>Add a College</p>
       )}
