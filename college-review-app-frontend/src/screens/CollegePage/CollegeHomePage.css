@@ -145,16 +145,16 @@
     }
 
     .collegeInfoTextContainer {
-        margin: -10px 4%;
+        margin: -10px 2.6%;
         flex-direction: row;
     }
 
     .collegeName {
-        font-size: 30px;
+        font-size: 26px;
     }
     
     .collegeLocation {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .reviewStatsLeftContainer {
@@ -275,6 +275,7 @@
     display: flex;
     flex-direction: column;
     background-color: #FCFBFA;
+    padding-bottom: 3%;
 }
 
 .collegeInfoContainer {
